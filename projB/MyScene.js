@@ -43,8 +43,44 @@ class MyScene extends CGFscene {
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.setShininess(10.0);
     }
-    update(t){
 
+    checkKeys() {
+        var text="Keys pressed: ";
+        var keysPressed=false;
+        // Check for key codes e.g. in https://keycode.info/
+        if (this.gui.isKeyPressed("KeyW")) {
+                this.bird.accelerate(1)
+
+        }
+
+        if (this.gui.isKeyPressed("KeyS")) {
+            this.bird.accelerate(-1)
+
+        }
+
+        if (this.gui.isKeyPressed("KeyA")){
+            this.bird.turn(1);
+
+        }
+
+        if (this.gui.isKeyPressed("KeyD")){
+            this.bird.turn(-1);
+
+        }
+
+        if (this.gui.isKeyPressed("KeyR")){
+            text += " R ";
+
+        }
+
+        if (keysPressed)
+        console.log(text);
+    }
+
+    update(t){
+        this.checkKeys();
+        this.bird.updatePosition(t);
+        
     }
 
     display() {
