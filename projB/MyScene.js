@@ -80,6 +80,7 @@ class MyScene extends CGFscene {
     update(t){
         this.checkKeys();
         this.bird.updatePosition(t);
+        this.bird.updateWings(t);
         
     }
 

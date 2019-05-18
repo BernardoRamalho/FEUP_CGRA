@@ -34,11 +34,19 @@ class MyBird extends CGFobject {
         this.orientation += 2.5*v;
     }
 
+    updateWings(t){
+        this.ang = Math.sin(t/400);
+    }
+
 
     display(){
 
+        //Changing Bird Position and Orientation
         this.scene.translate(...this.position);
 
+        this.scene.rotate(-Math.PI * this.orientation / 180, 0.0, 1.0, 0.0);
+
+        //Drawing the Body and Head
         this.scene.pushMatrix();
 
         this.scene.translate(0.5, 1, 0);
@@ -49,11 +57,16 @@ class MyBird extends CGFobject {
 
         this.body.display();
 
+        //Drawing the Left Wing
         this.scene.pushMatrix();
 
-        this.scene.translate(0, 0, 1);
+        this.scene.translate(0, 0, 0.5);
 
         this.scene.scale(0.5, 0.5, 0.5);
+
+        this.scene.rotate(this.ang, 1.0, 0.0, 0.0);
+
+        this.scene.translate(0, 0, 1);
 
         this.scene.rotate(Math.PI/2, 1, 0, 0);
 
@@ -61,11 +74,16 @@ class MyBird extends CGFobject {
 
         this.scene.popMatrix();
 
+        //Drawing the Right Wing
         this.scene.pushMatrix();
 
-        this.scene.translate(0, 0, -1);
+        this.scene.translate(0, 0, -0.5);
 
         this.scene.scale(0.5, 0.5, 0.5);
+
+        this.scene.rotate(-this.ang, 1.0, 0.0, 0.0);
+
+        this.scene.translate(0, 0, -1);
 
         this.scene.rotate(-Math.PI/2, 1, 0, 0);
         
