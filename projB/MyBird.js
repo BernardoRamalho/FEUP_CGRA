@@ -31,11 +31,11 @@ class MyBird extends CGFobject {
     }
 
     turn(v){
-        this.orientation += 2.5*v;
+        this.orientation += 5*v;
     }
 
     updateWings(t){
-        this.ang = Math.sin(t/400);
+        this.ang = Math.sin(t/200);
     }
 
 
