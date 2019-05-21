@@ -6,6 +6,7 @@ class MyScene extends CGFscene {
     constructor() {
         super();
         this.appearance = null;
+        
     }
     init(application) {
         super.init(application);
@@ -54,6 +55,11 @@ class MyScene extends CGFscene {
         this.branch3 = new MyTreeBranch(this,2,0.5);  
         this.branch4 = new MyTreeBranch(this,2,0.5);
         
+        //Branches
+
+        this.branches = [this.branch1,this.branch2,this.branch3,this.branch4];
+        this.desilignement_values = [Math.random() * -0.3,Math.random() * 0.3,Math.random() * -0.3,Math.random() * 0.3];
+        this.desilignement_rotation = [Math.random() * Math.PI,Math.random() * Math.PI,Math.random() * Math.PI,Math.random() * Math.PI];
 
         this.appearance = new CGFappearance(this);
 		this.appearance.setAmbient(0.3, 0.3, 0.3, 1);
@@ -170,8 +176,6 @@ class MyScene extends CGFscene {
         this.pushMatrix()
         this.lightning.display();
         this.popMatrix();
-        //this.setActiveShader(this.terrainShader);
-        this.textureMapTerrain.bind(0);
         
 
         //Uncomment following lines in case texture must have wrapping mode 'REPEAT'
@@ -184,16 +188,18 @@ class MyScene extends CGFscene {
         this.appearance.setTexture(this.textureTerrain);
         this.appearance.setTextureWrap('REPEAT', 'REPEAT');
         this.appearance.apply();
-        //this.setActiveShader(this.terrainShader);
+        this.setActiveShader(this.terrainShader);
+        this.textureMapTerrain.bind(1);
         
         this.rotate(-0.5*Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
         this.plane.display();
+		this.setActiveShader(this.defaultShader);
+
         this.popMatrix();
         
         
-        var branches = [this.branch1,this.branch2,this.branch3,this.branch4];
-        var desilignement_values = [Math.random() * -0.3,Math.random() * 0.3,Math.random() * -0.3,Math.random() * 0.3];
+        
         
 
         var row = 0;
@@ -202,9 +208,9 @@ class MyScene extends CGFscene {
         for (var i = 0; i < 4; i++) {
 
             this.pushMatrix();
-            this.translate(row*2.5 - 2.5 + desilignement_values[i], 0, line*2.5 - 2.5 + desilignement_values[4-i]);
-            this.rotate(Math.random() * Math.PI,0,1,0);
-            branches[i].display();
+            this.translate(row*2.5 - 2.5 + this.desilignement_values[i], 0, line*2.5 - 2.5 + this.desilignement_values[4-i]);
+            this.rotate(this.desilignement_rotation[i],0,1,0);
+            this.branches[i].display();
 
             this.popMatrix();
 
@@ -222,7 +228,6 @@ class MyScene extends CGFscene {
 
 
         // restore default shader (will be needed for drawing the axis in next frame)
-		this.setActiveShader(this.defaultShader);
         // ---- END Primitive drawing section
     }
 }

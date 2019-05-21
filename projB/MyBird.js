@@ -31,7 +31,7 @@ class MyBird extends CGFobject {
     }
 
     turn(v){
-        this.orientation += 5*v;
+        this.orientation += 10*v;
     }
 
     updateWings(t){
