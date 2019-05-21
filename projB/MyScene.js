@@ -22,11 +22,37 @@ class MyScene extends CGFscene {
         this.enableTextures(true);
         this.setUpdatePeriod(50);
 
+        //Relampago
+
+        this.axiom = "X";
+        this.angle = 25.0;
+        this.iterations = 3;
+        this.scaleFactor = 0.5;
+        this.lightning = new MyLightning(this);
+
+        this.doGenerate = function () {
+            this.lightning.generate(
+                this.axiom,
+                {
+                    "F": [ "FF" ],
+                    "X": [ "F[-X][X]F[-X]+FX"]//,"F[-X][X]F[-X]+X", "F[-X][x]+X", "F[+X]-X", "F[/X][X]F[\\\\X]+X", "F[X][X]X", "F[/X]\\X", "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X" ]
+                },
+                this.angle,
+                this.iterations,
+                this.scaleFactor
+            );
+        }
+
+        this.doGenerate();
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.plane = new Plane(this, 32);
         this.bird = new MyBird(this);
+        this.branch1 = new MyTreeBranch(this,2,0.5);
+        this.branch2 = new MyTreeBranch(this,2,0.5);
+        this.branch3 = new MyTreeBranch(this,2,0.5);  
+        this.branch4 = new MyTreeBranch(this,2,0.5);
         
 
         this.appearance = new CGFappearance(this);
@@ -126,6 +152,7 @@ class MyScene extends CGFscene {
         this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
 
 
+
         // Initialize Model-View matrix as identity (no transformation
         this.updateProjectionMatrix();
         this.loadIdentity();
@@ -139,6 +166,10 @@ class MyScene extends CGFscene {
 
         //Apply default appearance
         this.setDefaultAppearance();
+
+        this.pushMatrix()
+        this.lightning.display();
+        this.popMatrix();
         //this.setActiveShader(this.terrainShader);
         this.textureMapTerrain.bind(0);
         
@@ -159,8 +190,36 @@ class MyScene extends CGFscene {
         this.scale(60, 60, 1);
         this.plane.display();
         this.popMatrix();
+        
+        
+        var branches = [this.branch1,this.branch2,this.branch3,this.branch4];
+        var desilignement_values = [Math.random() * -0.3,Math.random() * 0.3,Math.random() * -0.3,Math.random() * 0.3];
+        
 
+        var row = 0;
+        var line = 0;
+
+        for (var i = 0; i < 4; i++) {
+
+            this.pushMatrix();
+            this.translate(row*2.5 - 2.5 + desilignement_values[i], 0, line*2.5 - 2.5 + desilignement_values[4-i]);
+            this.rotate(Math.random() * Math.PI,0,1,0);
+            branches[i].display();
+
+            this.popMatrix();
+
+            line += 1;
+            if ((i + 1) % 3 == 0){
+                row++;
+                line = 0;
+            }
+        }
+
+
+        this.pushMatrix()
         this.bird.display();
+        this.popMatrix()
+
 
         // restore default shader (will be needed for drawing the axis in next frame)
 		this.setActiveShader(this.defaultShader);
