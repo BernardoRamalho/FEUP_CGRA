@@ -15,7 +15,7 @@ class MyBird extends CGFobject {
 
         //MyBird Movement Variables
         this.orientation = 0;
-        this.velocity = 0.11;
+        this.velocity = 3;
         this.position = [0, 3, 0];
 
     }
@@ -27,7 +27,17 @@ class MyBird extends CGFobject {
     }
 
     accelerate(v){
-        this.velocity += 0.01*v;
+
+        if(this.velocity+0.01*v > 0.1 && this.velocity+0.01*v < 3.0){
+            this.velocity += 0.01*v;
+        }
+        else if (this.velocity+0.01*v < 0.1){
+            this.velocity = 0.1;
+        }
+        else {
+            this.velocity = 3;
+        }
+        
     }
 
     turn(v){
