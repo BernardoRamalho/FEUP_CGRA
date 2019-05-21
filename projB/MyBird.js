@@ -35,7 +35,7 @@ class MyBird extends CGFobject {
             this.velocity = 0.1;
         }
         else {
-            this.velocity = 3;
+            this.velocity = 0.1;
         }
         
     }
