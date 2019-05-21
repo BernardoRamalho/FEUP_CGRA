@@ -15,15 +15,15 @@ class MyBird extends CGFobject {
 
         //MyBird Movement Variables
         this.orientation = 0;
-        this.velocity = 3;
-        this.position = [0, 3, 0];
+        this.velocity = 0.11;
+        this.position = [0, 10, 0];
 
     }
 
     updatePosition(t){
         this.position[0] += Math.cos(Math.PI * this.orientation / 180)*this.velocity;
         this.position[2] += Math.sin(Math.PI * this.orientation / 180)*this.velocity;
-        this.position[1] = 3 + Math.sin(t/200);
+        this.position[1] = 5 + Math.sin(t/200);
     }
 
     accelerate(v){
@@ -35,13 +35,13 @@ class MyBird extends CGFobject {
             this.velocity = 0.1;
         }
         else {
-            this.velocity = 0.1;
+            this.velocity = 3;
         }
         
     }
 
     turn(v){
-        this.orientation += 10*v;
+        this.orientation += 5*v;
     }
 
     updateWings(t){
