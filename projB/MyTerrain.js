@@ -2,7 +2,7 @@
  * MyTerrqin
  * @constructor
  * @param scene - Reference to MyScene object
- */
+ 
 class MyTerrain extends CGFobject {
 	constructor(scene) {
         super(scene);
@@ -22,7 +22,7 @@ class MyTerrain extends CGFobject {
 
         this.textureTerrain = new CGFtexture(this, "images/terrain.jpg");
         this.appearance.setTexture(this.textureTerrain);
-        //this.appearance.setTextureWrap('REPEAT', 'REPEAT');
+        this.appearance.setTextureWrap('REPEAT', 'REPEAT');
         this.textureMapTerrain = new CGFtexture(this, 'images/heightmap.jpg');
 
         //Initialize shaders
@@ -78,3 +78,4 @@ class MyTerrain extends CGFobject {
         
     }
 }
+*/

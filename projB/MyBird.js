@@ -15,7 +15,7 @@ class MyBird extends CGFobject {
 
         //MyBird Movement Variables
         this.orientation = 0;
-        this.velocity = 3;
+        this.velocity = 0.3;
         this.position = [0, 3, 0];
 
     }
