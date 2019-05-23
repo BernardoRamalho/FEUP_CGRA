@@ -54,6 +54,7 @@ class MyScene extends CGFscene {
         this.branch2 = new MyTreeBranch(this,2,0.5);
         this.branch3 = new MyTreeBranch(this,2,0.5);  
         this.branch4 = new MyTreeBranch(this,2,0.5);
+        this.startDescending = false;
         
         //Branches
 
@@ -136,7 +137,13 @@ class MyScene extends CGFscene {
         }
         
         if (this.gui.isKeyPressed("KeyR")){
-            this.bird.resetS();
+            this.bird.reset();
+            this.startDescending = false;
+
+        }
+
+        if (this.gui.isKeyPressed("KeyP")){
+            this.bird.isDescending = true;
 
         }
 
@@ -144,10 +151,11 @@ class MyScene extends CGFscene {
     }
 
     update(t){
-        this.checkKeys();
+        
         this.bird.updatePosition(t);
-
+        this.checkKeys();
         this.bird.updateWings(t);
+        
         
     }
 
