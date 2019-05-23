@@ -15,7 +15,7 @@ class MyBird extends CGFobject {
 
         //MyBird Movement Variables
         this.orientation = 0;
-        this.velocity = 3;
+        this.velocity = 0;
         this.position = [0, 3, 0];
 
     }
@@ -46,6 +46,11 @@ class MyBird extends CGFobject {
 
     updateWings(t){
         this.ang = Math.sin(t/200);
+    }
+
+    reset(){
+        this.position = [0, 3, 0];
+        this.velocity = 0;
     }
 
 
