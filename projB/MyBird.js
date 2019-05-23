@@ -1,3 +1,4 @@
+    
 /**
 * MyBird
 * @constructor
@@ -13,6 +14,10 @@ class MyBird extends CGFobject {
         this.rightWing = new MyTriangle(this.scene);
         this.leftWing = new MyTriangle(this.scene);
 
+        //MyBird State Variables
+        this.isAscending = false;
+        this.isDescending = false;
+
         //MyBird Movement Variables
         this.orientation = 0;
 
@@ -22,9 +27,30 @@ class MyBird extends CGFobject {
     }
 
     updatePosition(t){
-        this.position[0] += Math.cos(Math.PI * this.orientation / 180)*this.velocity;
-        this.position[2] += Math.sin(Math.PI * this.orientation / 180)*this.velocity;
-        this.position[1] = 3 + Math.sin(t/200);
+
+        if (this.isDescending == true){
+            this.position[1] -= 0.15;
+
+            if ( this.position[1] < 0.5){
+                this.isDescending = false;
+                this.isAscending = true;
+            }
+        }
+        else if (this.isAscending == true){
+           this.position[1] += 0.15
+
+           if(this.position[1] > 2.99){
+             
+               this.isAscending = false;
+           }
+
+        }
+        else{
+            this.position[0] += Math.cos(Math.PI * this.orientation / 180)*this.velocity;
+            this.position[2] += Math.sin(Math.PI * this.orientation / 180)*this.velocity;
+            this.position[1] = 3 + Math.sin(t/200);
+        }
+        
     }
 
     accelerate(v){
@@ -53,7 +79,6 @@ class MyBird extends CGFobject {
         this.position = [0, 3, 0];
         this.velocity = 0;
     }
-
 
     display(){
 

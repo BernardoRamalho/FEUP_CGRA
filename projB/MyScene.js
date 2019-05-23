@@ -137,7 +137,13 @@ class MyScene extends CGFscene {
         }
         
         if (this.gui.isKeyPressed("KeyR")){
-            this.bird.resetS();
+            this.bird.reset();
+            this.startDescending = false;
+
+        }
+
+        if (this.gui.isKeyPressed("KeyP")){
+            this.bird.isDescending = true;
 
         }
 
@@ -145,10 +151,11 @@ class MyScene extends CGFscene {
     }
 
     update(t){
-        this.checkKeys();
+        
         this.bird.updatePosition(t);
-
+        this.checkKeys();
         this.bird.updateWings(t);
+        
         
     }
 
