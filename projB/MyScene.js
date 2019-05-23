@@ -54,6 +54,7 @@ class MyScene extends CGFscene {
         this.branch2 = new MyTreeBranch(this,2,0.5);
         this.branch3 = new MyTreeBranch(this,2,0.5);  
         this.branch4 = new MyTreeBranch(this,2,0.5);
+        this.terrain = new MyTerrain(this);
         
         //Branches
 
@@ -61,7 +62,7 @@ class MyScene extends CGFscene {
         this.desilignement_values = [Math.random() * -0.3,Math.random() * 0.3,Math.random() * -0.3,Math.random() * 0.3];
         this.desilignement_rotation = [Math.random() * Math.PI,Math.random() * Math.PI,Math.random() * Math.PI,Math.random() * Math.PI];
 
-        this.appearance = new CGFappearance(this);
+        /*this.appearance = new CGFappearance(this);
 		this.appearance.setAmbient(0.3, 0.3, 0.3, 1);
 		this.appearance.setDiffuse(0.7, 0.7, 0.7, 1);
         this.appearance.setSpecular(0.0, 0.0, 0.0, 1);
@@ -87,7 +88,7 @@ class MyScene extends CGFscene {
         // shader code panels references
 		this.shadersDiv = document.getElementById("shaders");
 		this.vShaderDiv = document.getElementById("vshader");
-		this.fShaderDiv = document.getElementById("fshader");
+		this.fShaderDiv = document.getElementById("fshader");*/
 
 
 
@@ -177,15 +178,12 @@ class MyScene extends CGFscene {
         this.lightning.display();
         this.popMatrix();
         
-
-        //Uncomment following lines in case texture must have wrapping mode 'REPEAT'
-		this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.REPEAT);
-        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_T, this.gl.REPEAT);
+        this.terrain.display();
         
 
         // ---- BEGIN Primitive drawing section
         
-        this.pushMatrix();
+       /* this.pushMatrix();
         this.appearance.setTexture(this.textureTerrain);
         this.appearance.setTextureWrap('REPEAT', 'REPEAT');
         this.appearance.apply();
@@ -197,7 +195,7 @@ class MyScene extends CGFscene {
         this.plane.display();
 		this.setActiveShader(this.defaultShader);
 
-        this.popMatrix();
+        this.popMatrix();*/
         
         
         
