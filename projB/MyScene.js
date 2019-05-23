@@ -137,7 +137,7 @@ class MyScene extends CGFscene {
         }
         
         if (this.gui.isKeyPressed("KeyR")){
-            text += " R ";
+            this.bird.resetS();
 
         }
 
