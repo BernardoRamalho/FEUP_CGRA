@@ -22,7 +22,7 @@ class MyBird extends CGFobject {
         this.orientation = 0;
 
         this.velocity = 0;
-        this.position = [0, 3, 0];
+        this.position = [0, 4, 0];
 
     }
 
@@ -46,10 +46,11 @@ class MyBird extends CGFobject {
 
         }
         else{
-            this.position[0] += Math.cos(Math.PI * this.orientation / 180)*this.velocity;
-            this.position[2] += Math.sin(Math.PI * this.orientation / 180)*this.velocity;
+            
             this.position[1] = 3 + Math.sin(t/200);
         }
+        this.position[0] += Math.cos(Math.PI * this.orientation / 180)*this.velocity;
+        this.position[2] += Math.sin(Math.PI * this.orientation / 180)*this.velocity;
         
     }
 

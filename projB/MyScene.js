@@ -62,35 +62,6 @@ class MyScene extends CGFscene {
         this.desilignement_values = [Math.random() * -0.3,Math.random() * 0.3,Math.random() * -0.3,Math.random() * 0.3];
         this.desilignement_rotation = [Math.random() * Math.PI,Math.random() * Math.PI,Math.random() * Math.PI,Math.random() * Math.PI];
 
-        /*this.appearance = new CGFappearance(this);
-		this.appearance.setAmbient(0.3, 0.3, 0.3, 1);
-		this.appearance.setDiffuse(0.7, 0.7, 0.7, 1);
-        this.appearance.setSpecular(0.0, 0.0, 0.0, 1);
-        this.appearance.setShininess(120);
-        
-
-        
-        //Initialize some Textures
-        this.textureTerrain = new CGFtexture(this, "images/terrain.jpg");
-        this.appearance.setTexture(this.textureTerrain);
-        this.appearance.setTextureWrap('REPEAT', 'REPEAT');
-
-
-        this.textureMapTerrain = new CGFtexture(this, 'images/heightmap.jpg');
-
-
-        this.terrainShader = new CGFshader(this.gl, "shaders/terrain.vert", "shaders/terrain.frag");
-
-        // additional texture will have to be bound to texture unit 1 later, when using the shader, with "this.texture2.bind(1);"
-        this.terrainShader.setUniformsValues({ uSampler2: 1 });
-
-        
-        // shader code panels references
-		this.shadersDiv = document.getElementById("shaders");
-		this.vShaderDiv = document.getElementById("vshader");
-		this.fShaderDiv = document.getElementById("fshader");*/
-
-
 
     }    
 
@@ -150,6 +121,8 @@ class MyScene extends CGFscene {
        
     }
 
+    
+
     update(t){
         
         this.bird.updatePosition(t);
@@ -189,51 +162,45 @@ class MyScene extends CGFscene {
         
 
         // ---- BEGIN Primitive drawing section
-        
-       /* this.pushMatrix();
-        this.appearance.setTexture(this.textureTerrain);
-        this.appearance.setTextureWrap('REPEAT', 'REPEAT');
-        this.appearance.apply();
-        this.setActiveShader(this.terrainShader);
-        this.textureMapTerrain.bind(1);
-        
-        this.rotate(-0.5*Math.PI, 1, 0, 0);
-        this.scale(60, 60, 1);
-        this.plane.display();
-		this.setActiveShader(this.defaultShader);
 
-        this.popMatrix();*/
-        
-        
-        
-        
 
-        var row = 0;
-        var line = 0;
+        //var row = 0;
+        //var line = 0;
 
         for (var i = 0; i < 4; i++) {
 
-            this.pushMatrix();
-            this.translate(row*2.5 - 2.5 + this.desilignement_values[i], 0, line*2.5 - 2.5 + this.desilignement_values[4-i]);
-            this.rotate(this.desilignement_rotation[i],0,1,0);
+            //this.pushMatrix();
+            //this.translate(row*7.5 - 7.5 + this.desilignement_values[i], 0, line*7.5 - 7.5 + this.desilignement_values[4-i]);
+            //this.rotate(this.desilignement_rotation[i],0,1,0);
             this.branches[i].display();
 
-            this.popMatrix();
+            //this.popMatrix();
 
-            line += 1;
-            if ((i + 1) % 3 == 0){
-                row++;
-                line = 0;
-            }
+            //line += 1;
+            //if ((i + 1) % 3 == 0){
+                //row++;
+                //line = 0;
+            //}
         }
 
 
-        this.pushMatrix()
         this.bird.display();
-        this.popMatrix()
+
+        if (this.bird.position[1] <= 1) {
+            
+            for (var i = 0; i < this.branches.length; i++) {
+                if ((Math.abs(this.bird.position[0]-this.branches[i].position[0]) < 1) && (Math.abs(this.bird.position[2]-this.branches[i].position[2]) < 1) ){
+                    this.bird.reset();
+                    break;
+                    
+                }
+                
+            }
+        }
+        
 
 
-        // restore default shader (will be needed for drawing the axis in next frame)
+       
         // ---- END Primitive drawing section
     }
 }

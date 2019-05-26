@@ -9,8 +9,12 @@ class MyTreeBranch extends CGFobject {
 
         this.trunkHeight = trunkHeight;
         this.trunkRadius = trunkRadius;
-        
 
+       
+        this.initPosition();
+        this.orientation = Math.random() * Math.PI;
+        
+        
         //Initializing MyTree Objects
         this.trunk = new MyCylinder(this.scene, 10, 1, 2, 0.2 );
         
@@ -18,6 +22,14 @@ class MyTreeBranch extends CGFobject {
         this.initMaterials();
     }
 
+    initPosition(){
+
+        var plusOrMinus1 =  Math.random() < 0.5 ? -1 : 1;
+        var plusOrMinus2 =  Math.random() < 0.5 ? -1 : 1;
+        this.position = [7.5*(Math.random() * plusOrMinus1), 0.5, 7.5*( Math.random() * plusOrMinus2)];
+    }
+
+  
     initMaterials() {
 
         //Texture Trunk
@@ -34,6 +46,8 @@ class MyTreeBranch extends CGFobject {
 
         //Trunk Displaying
         this.scene.pushMatrix();
+        this.scene.translate(...this.position);
+        this.scene.rotate(this.orientation, 0, 1, 0);
         this.scene.rotate(Math.PI/2,1,0,0);
         this.trunkMaterial.apply();
         this.trunk.display();
