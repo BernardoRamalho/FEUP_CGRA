@@ -17,7 +17,8 @@ class MyBird extends CGFobject {
         //MyBird State Variables
         this.isAscending = false;
         this.isDescending = false;
-
+        
+        this.catchedBranch = false;
         //MyBird Movement Variables
         this.orientation = 0;
 
@@ -49,8 +50,8 @@ class MyBird extends CGFobject {
             
             this.position[1] = 3 + Math.sin(t/200);
         }
-        this.position[0] += Math.cos(Math.PI * this.orientation / 180)*this.velocity;
-        this.position[2] += Math.sin(Math.PI * this.orientation / 180)*this.velocity;
+        this.position[0] += Math.cos(this.orientation )*this.velocity;
+        this.position[2] += Math.sin(this.orientation )*this.velocity;
         
     }
 
@@ -68,8 +69,22 @@ class MyBird extends CGFobject {
         
     }
 
+    
+
+    drop(branch){
+        this.catchedBranch = false;
+        branch.isCatched = false;
+    }
+
+    holdBranch(branch){
+        branch.position = this.position;
+        this.catchedBranch = true;
+        branch.isCatched = true;
+    }
+
+
     turn(v){
-        this.orientation += 10*v;
+        this.orientation += 10*v * Math.PI/180;
     }
 
     updateWings(t){
@@ -86,7 +101,7 @@ class MyBird extends CGFobject {
         //Changing Bird Position and Orientation
         this.scene.translate(...this.position);
 
-        this.scene.rotate(-Math.PI * this.orientation / 180, 0.0, 1.0, 0.0);
+        this.scene.rotate(-this.orientation, 0.0, 1.0, 0.0);
 
         //Drawing the Body and Head
         this.scene.pushMatrix();

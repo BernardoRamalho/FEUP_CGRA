@@ -114,13 +114,38 @@ class MyScene extends CGFscene {
         }
 
         if (this.gui.isKeyPressed("KeyP")){
-            this.bird.isDescending = true;
 
+            this.bird.isDescending = true;  
         }
 
        
     }
 
+    catchedBranch(t){
+
+        
+
+        
+        for (var i = 0; i < this.branches.length; i++) {
+            if (this.branches[i].isCatched){
+                this.branches[i].orientation = -this.bird.orientation;
+            }
+            if ( this.bird.position[1]<=1 && (Math.abs(this.bird.position[0]-this.branches[i].position[0]) < 1.5) && (Math.abs(this.bird.position[2]-this.branches[i].position[2]) < 1.5) ){
+                if (this.bird.catchedBranch == false) {
+                    this.bird.holdBranch(this.branches[i]);
+                    
+                }
+                /*else {
+                    this.bird.drop(this.branches[i]);
+                    this.branches[i].position = [0,0,0];
+                }*/
+                break;
+            }
+        }
+    
+
+        
+    }
     
 
     update(t){
@@ -128,7 +153,10 @@ class MyScene extends CGFscene {
         this.bird.updatePosition(t);
         this.checkKeys();
         this.bird.updateWings(t);
+        this.catchedBranch(t);
         
+        
+       
         
     }
 
@@ -186,17 +214,7 @@ class MyScene extends CGFscene {
 
         this.bird.display();
 
-        if (this.bird.position[1] <= 1) {
-            
-            for (var i = 0; i < this.branches.length; i++) {
-                if ((Math.abs(this.bird.position[0]-this.branches[i].position[0]) < 1) && (Math.abs(this.bird.position[2]-this.branches[i].position[2]) < 1) ){
-                    this.bird.reset();
-                    break;
-                    
-                }
-                
-            }
-        }
+        
         
 
 

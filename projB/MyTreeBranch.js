@@ -10,6 +10,7 @@ class MyTreeBranch extends CGFobject {
         this.trunkHeight = trunkHeight;
         this.trunkRadius = trunkRadius;
 
+        this.isCatched = false;
        
         this.initPosition();
         this.orientation = Math.random() * Math.PI;
