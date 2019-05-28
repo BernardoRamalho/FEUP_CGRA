@@ -141,17 +141,7 @@ class MyScene extends CGFscene {
         this.bird.updatePosition(t, this.branches);
         this.checkKeys();
         this.bird.updateWings(t);
-<<<<<<< HEAD
-      
-=======
-        this.catchedBranch(t);
-        this.lightning.display();
-
-        
-        
-       
-        
->>>>>>> ce37fb4e5f14015afc17fd9021e0366999240bf7
+        this.lightning.display();    
     }
 
     display() {
