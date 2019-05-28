@@ -20,6 +20,6 @@ void main() {
 	vec4 map = texture2D(uSampler2, vTextureCoord);
 	
 
-	vec3 offset = vec3(0,0,1.0*map.r);
+	vec3 offset = vec3(0,0,10.0*map.r);
 	gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition+offset, 1.0);
 }
