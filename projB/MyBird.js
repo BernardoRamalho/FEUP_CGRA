@@ -177,7 +177,6 @@ class MyBird extends CGFobject {
 
         this.scene.rotate(-this.orientation, 0.0, 1.0, 0.0);
 
-<<<<<<< HEAD
         if(this.isDescending && this.velocity != 0){
             this.scene.rotate(-Math.PI/8, 0, 0, 1);
         }
@@ -186,7 +185,6 @@ class MyBird extends CGFobject {
         }
 
         //Drawing the Body and Head
-=======
         //Drawing Head
         this.scene.pushMatrix();
         this.scene.translate(0.5,0,0);
@@ -195,7 +193,6 @@ class MyBird extends CGFobject {
         this.head.display();
         this.scene.popMatrix();
 
->>>>>>> 50fedff908ccd2c2bb48377b441ce8bd7483f0e3
         this.scene.pushMatrix();
         this.scene.translate(0.8,0,0);
         this.scene.rotate(90*Math.PI/180,0,0,1);
