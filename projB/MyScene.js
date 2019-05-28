@@ -56,6 +56,7 @@ class MyScene extends CGFscene {
         this.branch4 = new MyTreeBranch(this,2,0.5);
         this.terrain = new MyTerrain(this);
         this.cubeMapDay = new MyCubeMap(this, 65, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
+        this.nest = new MyNest(this);
         
         //Branches
 
@@ -189,37 +190,37 @@ class MyScene extends CGFscene {
         
         this.terrain.display();
         
-
+        
         // ---- BEGIN Primitive drawing section
-
-
-        //var row = 0;
-        //var line = 0;
-
+        
+        
+        
+        
         for (var i = 0; i < 4; i++) {
-
+            
             //this.pushMatrix();
             //this.translate(row*7.5 - 7.5 + this.desilignement_values[i], 0, line*7.5 - 7.5 + this.desilignement_values[4-i]);
             //this.rotate(this.desilignement_rotation[i],0,1,0);
             this.branches[i].display();
-
+            
             //this.popMatrix();
-
+            
             //line += 1;
             //if ((i + 1) % 3 == 0){
                 //row++;
                 //line = 0;
-            //}
+                //}
+            }
+            
+            
+            this.cubeMapDay.display();
+            this.nest.display();
+            this.bird.display();
+            
+            
+            
+            
+            
+            // ---- END Primitive drawing section
         }
-
-        
-        this.cubeMapDay.display();
-        this.bird.display();
-        
-        
-
-
-       
-        // ---- END Primitive drawing section
     }
-}

@@ -8,29 +8,31 @@ class MyNest extends CGFobject {
         super(scene);
                 
         //Initialize MyPlane objects
-        this.nest = new MyCylinder(this.scene,4,4,2,3);
-        
-        
-       
-    
+        this.nest = new MyCylinder(this.scene,10,4,2,3);
+        this.initMaterials();
     }
     
-    
+    initMaterials() {
+
+        //Texture Leaves
+        this.nestMaterial = new CGFappearance(this.scene);
+        this.nestMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.nestMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.nestMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.nestMaterial.setShininess(10.0);
+        this.nestMaterial.loadTexture("images/nest.jpg"); 
+        this.nestMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
+        
+    }
+
+
     display() {
 
-        //Uncomment following lines in case texture must have wrapping mode 'REPEAT'
-		this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_WRAP_S, this.scene.gl.REPEAT);
-        this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_WRAP_T, this.scene.gl.REPEAT);
-        
-
-
-
         // ---- BEGIN Primitive drawing section
-        
         this.scene.pushMatrix();
-    
-
+        this.nestMaterial.apply();
+        this.nest.display();
         this.scene.popMatrix();
-        
     }
 }
