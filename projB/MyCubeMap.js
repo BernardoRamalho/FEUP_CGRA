@@ -86,9 +86,10 @@ class MyCubeMap extends CGFobject {
     
     
     display() {
-
+        
         this.scene.pushMatrix();
         
+        this.scene.translate(0.0,30.0,0.0);
         this.scene.scale(this.scale,this.scale,this.scale);
 
         //Displaying Top Quad
