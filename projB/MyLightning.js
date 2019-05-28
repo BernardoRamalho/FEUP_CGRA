@@ -27,11 +27,10 @@ class MyLightning extends CGFobject {
     // cria o lexico da gramática
     initGrammar(){
         this.grammar = {
-            "F": new MyQuad(this.scene),
-            "X": new MyQuad(this.scene),
+            "F": new MyQuad(this.scene, 0.5),
+            "X": new MyQuad(this.scene, 0.5),
         };
     }
-
 
     // gera o sistema L com os par�metros atuais da cena
     generate(_axiom, _productions, _angle, _iterations, _scale){
@@ -83,14 +82,25 @@ class MyLightning extends CGFobject {
         console.log("(length: "+this.axiom.length+")");
     }
 
-    display(){
+    
+    update(t){
+        
+    }
+
+    startAnimation(t){
+        var tempo_init = t
+        this.iterate()
+        return 
+    }
+
+    display(depth){
         this.scene.pushMatrix();
         this.scene.scale(this.scale, this.scale, this.scale);
 
         var i;
 
         // percorre a cadeia de caracteres
-        for (i=0; i<this.axiom.length; ++i){
+        for (i=0; i<depth; ++i){
 
             // verifica se sao caracteres especiais
             switch(this.axiom[i]){
