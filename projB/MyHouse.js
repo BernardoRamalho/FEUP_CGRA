@@ -12,7 +12,7 @@ class MyHouse extends CGFobject {
         this.cube = new MyUnitCubeQuad(scene, 'images/wood-house-door.jpg', 'images/wood-house.jpg', 'images/wood-house-window.jpg', 'images/wood-house-window.jpg', 'images/wood-house.jpg', 'images/wood-house.jpg');
         this.pyramid = new MyPyramid(scene, 4, 4, 0.5, 2);
         this.prism = new MyPrism(scene, 8, 1, 2, 0.2);
-        this.quad = new MyQuad(scene);
+        this.quad = new MyQuad(scene, 0.5);
 
         this.initMaterials();
     }

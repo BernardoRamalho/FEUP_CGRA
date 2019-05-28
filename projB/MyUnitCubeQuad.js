@@ -8,12 +8,12 @@ class MyUnitCubeQuad extends CGFobject {
         super(scene);
                 
         //Initialize MyUnitCubeQuad objects
-        this.frontQuad = new MyQuad(this.scene); //The Front Face of the cube is the one with positive Z value
-        this.leftQuad = new MyQuad(this.scene); //In relation to us, this is, the one with negative X value
-        this.rightQuad = new MyQuad(this.scene);
-        this.backQuad = new MyQuad(this.scene);
-        this.topQuad = new MyQuad(this.scene);
-        this.bottomQuad = new MyQuad(this.scene);
+        this.frontQuad = new MyQuad(this.scene, 0.5); //The Front Face of the cube is the one with positive Z value
+        this.leftQuad = new MyQuad(this.scene, 0.5); //In relation to us, this is, the one with negative X value
+        this.rightQuad = new MyQuad(this.scene, 0.5);
+        this.backQuad = new MyQuad(this.scene, 0.5);
+        this.topQuad = new MyQuad(this.scene, 0.5);
+        this.bottomQuad = new MyQuad(this.scene, 0.5);
 
         //Initialize Textures
         this.frontTexture = frontTexture;
