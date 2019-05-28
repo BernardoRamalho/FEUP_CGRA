@@ -30,6 +30,7 @@ class MyScene extends CGFscene {
         this.iterations = 3;
         this.scaleFactor = 0.5;
         this.lightning = new MyLightning(this);
+        this.tree = new MyLSPlant(this);
 
         this.doGenerate = function () {
             this.lightning.generate(
@@ -42,6 +43,18 @@ class MyScene extends CGFscene {
                 this.iterations,
                 this.scaleFactor
             );
+            this.tree.generate(
+                this.axiom,
+                {
+                    "F": [ "FF" ],
+                    "X": [ "F[-X][X]F[-X]+X", "F[-X][x]+X", "F[+X]-X", "F[/X][X]F[\\\\X]+X", "F[\\X][X]/X", "F[/X]\\X", "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X"]
+                },
+                this.angle,
+                this.iterations,
+                this.scaleFactor
+            );
+
+        
         }
 
         this.doGenerate();
@@ -55,7 +68,7 @@ class MyScene extends CGFscene {
         this.branch3 = new MyTreeBranch(this,2,0.5);  
         this.branch4 = new MyTreeBranch(this,2,0.5);
         this.terrain = new MyTerrain(this);
-        this.cubeMapDay = new MyCubeMap(this, 65, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
+        this.cubeMapDay = new MyCubeMap(this, 90, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
         this.nest = new MyNest(this);
         
         //Branches
@@ -128,7 +141,17 @@ class MyScene extends CGFscene {
         this.bird.updatePosition(t, this.branches);
         this.checkKeys();
         this.bird.updateWings(t);
+<<<<<<< HEAD
       
+=======
+        this.catchedBranch(t);
+        this.lightning.display();
+
+        
+        
+       
+        
+>>>>>>> ce37fb4e5f14015afc17fd9021e0366999240bf7
     }
 
     display() {
@@ -153,8 +176,12 @@ class MyScene extends CGFscene {
         //Apply default appearance
         this.setDefaultAppearance();
 
-        this.pushMatrix()
-        this.lightning.display();
+        
+
+        this.pushMatrix();
+        this.translate(-6,0,6);
+        this.scale(10,5,10);
+        this.tree.display();
         this.popMatrix();
         
         this.terrain.display();

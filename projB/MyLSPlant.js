@@ -1,9 +1,9 @@
 /**
- * MyLightning
+ * MyLSPlant
  * @constructor
  * @param scene - Reference to MyScene object
  */
-class MyLightning extends CGFobject {
+class MyLSPlant extends CGFobject {
 	constructor(scene) {
         super(scene);
         this.init();
@@ -11,26 +11,18 @@ class MyLightning extends CGFobject {
 
     init(){
         // cria o lexico da gramática
-        this.initGrammar();
-        this.initMaterials();
+        this.initGrammar()
 
-    }
-    initMaterials() {
-
-        //Branch Material
-        this.whiteMaterial = new CGFappearance(this.scene);
-        this.whiteMaterial.setAmbient(1.0, 1.0, 1.0, 1.0);
-        this.whiteMaterial.setDiffuse(1.0, 1.0, 1.0, 1.0);
-        this.whiteMaterial.setShininess(10.0);
     }
 
     // cria o lexico da gramática
     initGrammar(){
         this.grammar = {
-            "F": new MyQuad(this.scene, 0.5),
-            "X": new MyQuad(this.scene, 0.5),
+            "F": new MyBranch(this.scene),
+            "X": new MyLeaf(this.scene)
         };
     }
+
 
     // gera o sistema L com os par�metros atuais da cena
     generate(_axiom, _productions, _angle, _iterations, _scale){
@@ -139,14 +131,12 @@ class MyLightning extends CGFobject {
 
                     if ( primitive )
                     {
-                        this.whiteMaterial.apply();
                         primitive.display();
                         this.scene.translate(0, 1, 0);
                     }
                     break;
             }
         }
-        //this.super.display();
         this.scene.popMatrix();
     }
 }
