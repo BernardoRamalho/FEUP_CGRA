@@ -8,7 +8,7 @@ class MyNest extends CGFobject {
         super(scene);
                 
         //Initialize MyPlane objects
-        this.nest = new MyCylinder(this.scene,10,4,2,3);
+        this.nest_Branch= new MyTreeBranch(this,2,0.5);
         this.position = [10.0,0.0,0.0]
         this.initMaterials();
     }
@@ -30,11 +30,11 @@ class MyNest extends CGFobject {
 
     display() {
 
-        // ---- BEGIN Primitive drawing section
-        this.scene.pushMatrix();
-        this.scene.translate(...this.position)
-        this.nestMaterial.apply();
-        this.nest.display();
-        this.scene.popMatrix();
+        for (i = 0; i < 3; i++){
+            for (j = 0; j < 6 + 6*i; j++){
+                this.nest_Branch.position = [0, i, 0]
+                
+            }
+        }
     }
 }

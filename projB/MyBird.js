@@ -71,10 +71,14 @@ class MyBird extends CGFobject {
         
     }
 
-    checkProximity(branches) {
+    checkProximity(branches, nest) {
 
         if(this.catchedBranch){
-
+            if((Math.abs(this.position[0]-nest.position[0]) < 1.5) && (Math.abs(this.position[2]-this.branch.position[2]) < 1.5) && this.position[1] < 0.7 ){
+                this.branch.position = this.position;
+                this.branch.isCatched = false;
+                this.catchedBranch = false;
+            }
         }
         else{
             for (var i = 0; i < branches.length; i++) {
@@ -120,6 +124,13 @@ class MyBird extends CGFobject {
         this.scene.translate(...this.position);
 
         this.scene.rotate(-this.orientation, 0.0, 1.0, 0.0);
+
+        if(this.isDescending && this.velocity != 0){
+            this.scene.rotate(-Math.PI/8, 0, 0, 1);
+        }
+        else if (this.isAscending && this.velocity != 0){
+            this.scene.rotate(+Math.PI/8, 0, 0, 1);
+        }
 
         //Drawing the Body and Head
         this.scene.pushMatrix();
