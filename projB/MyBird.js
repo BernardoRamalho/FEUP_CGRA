@@ -98,6 +98,8 @@ class MyBird extends CGFobject {
 
     display(){
 
+        this.scene.pushMatrix();
+
         //Changing Bird Position and Orientation
         this.scene.translate(...this.position);
 
@@ -145,6 +147,8 @@ class MyBird extends CGFobject {
         this.scene.rotate(-Math.PI/2, 1, 0, 0);
         
         this.rightWing.display();
+
+        this.scene.popMatrix();
 
         this.scene.popMatrix();
 
