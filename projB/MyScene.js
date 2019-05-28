@@ -56,6 +56,7 @@ class MyScene extends CGFscene {
         this.branch4 = new MyTreeBranch(this,2,0.5);
         this.terrain = new MyTerrain(this);
         this.cubeMapDay = new MyCubeMap(this, 65, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
+        this.nest = new MyCylinder(this, 4, 4, 2, 2);
         
         //Branches
 
@@ -213,6 +214,7 @@ class MyScene extends CGFscene {
         }
 
         
+        this.nest.display();
         this.cubeMapDay.display();
         this.bird.display();
         

@@ -82,25 +82,14 @@ class MyLightning extends CGFobject {
         console.log("(length: "+this.axiom.length+")");
     }
 
-    
-    update(t){
-        
-    }
-
-    startAnimation(t){
-        var tempo_init = t
-        this.iterate()
-        return 
-    }
-
-    display(depth){
+    display(){
         this.scene.pushMatrix();
         this.scene.scale(this.scale, this.scale, this.scale);
 
         var i;
 
         // percorre a cadeia de caracteres
-        for (i=0; i<depth; ++i){
+        for (i=0; i<this.axiom.length; ++i){
 
             // verifica se sao caracteres especiais
             switch(this.axiom[i]){
