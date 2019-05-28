@@ -4,20 +4,21 @@
  * @param scene - Reference to MyScene object
  */
 class MyTriangle extends CGFobject {
-	constructor(scene) {
+	constructor(scene,x) {
 		super(scene);
+		this.x = x;
 
-		this.initBuffers();
+		this.initBuffers(x);
 	}
-	initBuffers() {
+	initBuffers(x) {
 		this.vertices = [
-			-1, 1, 0,	//0
-			-1, -1, 0,	//1
-			1, -1, 0,	//2
+			-x, x, 0,	//0
+			-x, -x, 0,	//1
+			x, -x, 0,	//2
 
-			-1, 1, 0,	//0
-			-1, -1, 0,	//1
-			1, -1, 0	//2
+			-x, x, 0,	//0
+			-x, -x, 0,	//1
+			x, -x, 0	//2
 		];
 
 		this.normals = [

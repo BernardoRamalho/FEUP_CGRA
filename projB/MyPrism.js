@@ -35,9 +35,9 @@ class MyPrism extends CGFobject {
 
            
             this.vertices.push(radius*ca, 0, radius*-sa);//1
-            this.vertices.push(radius*ca, height, radius*-sa);//2
+            this.vertices.push(radius*ca / 2, height, radius*-sa/2);//2
             this.vertices.push(radius*caa, 0, radius*-saa);//4
-            this.vertices.push(radius*caa, height, radius*-saa);//3
+            this.vertices.push(radius*caa/2, height, radius*-saa/2);//3
 
             //Texture Coordinates
             this.texCoords.push(i * (1 / this.slices), 1);
