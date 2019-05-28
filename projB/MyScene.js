@@ -169,6 +169,8 @@ class MyScene extends CGFscene {
         this.checkKeys();
         this.bird.updateWings(t);
         this.catchedBranch(t);
+        this.lightning.display();
+
         
         
        
@@ -197,10 +199,7 @@ class MyScene extends CGFscene {
         //Apply default appearance
         this.setDefaultAppearance();
 
-        this.pushMatrix()
-        this.scale(0.5,1,1);
-        this.lightning.display();
-        this.popMatrix();
+        
 
         this.pushMatrix();
         this.translate(-6,0,6);

@@ -146,6 +146,7 @@ class MyLightning extends CGFobject {
                     break;
             }
         }
+        //this.super.display();
         this.scene.popMatrix();
     }
 }
