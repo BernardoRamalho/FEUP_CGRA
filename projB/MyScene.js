@@ -123,43 +123,12 @@ class MyScene extends CGFscene {
        
     }
 
-    catchedBranch(t){
-
-        
-
-        
-        for (var i = 0; i < this.branches.length; i++) {
-            if (this.branches[i].isCatched){
-                this.branches[i].orientation = -this.bird.orientation;
-            }
-            if ( this.bird.position[1]<=1 && (Math.abs(this.bird.position[0]-this.branches[i].position[0]) < 1.5) && (Math.abs(this.bird.position[2]-this.branches[i].position[2]) < 1.5) ){
-                if (this.bird.catchedBranch == false) {
-                    this.bird.holdBranch(this.branches[i]);
-                    
-                }
-                /*else {
-                    this.bird.drop(this.branches[i]);
-                    this.branches[i].position = [0,0,0];
-                }*/
-                break;
-            }
-        }
-    
-
-        
-    }
-    
-
     update(t){
         
-        this.bird.updatePosition(t);
+        this.bird.updatePosition(t, this.branches);
         this.checkKeys();
         this.bird.updateWings(t);
-        this.catchedBranch(t);
-        
-        
-       
-        
+      
     }
 
     display() {
@@ -198,28 +167,15 @@ class MyScene extends CGFscene {
         
         for (var i = 0; i < 4; i++) {
             
-            //this.pushMatrix();
-            //this.translate(row*7.5 - 7.5 + this.desilignement_values[i], 0, line*7.5 - 7.5 + this.desilignement_values[4-i]);
-            //this.rotate(this.desilignement_rotation[i],0,1,0);
-            this.branches[i].display();
-            
-            //this.popMatrix();
-            
-            //line += 1;
-            //if ((i + 1) % 3 == 0){
-                //row++;
-                //line = 0;
-                //}
+            if (this.branches[i].isCatched == false){
+                this.branches[i].display();
             }
-            
-            
+
+        }
+               
             this.cubeMapDay.display();
             this.nest.display();
-            this.bird.display();
-            
-            
-            
-            
+            this.bird.display(); 
             
             // ---- END Primitive drawing section
         }

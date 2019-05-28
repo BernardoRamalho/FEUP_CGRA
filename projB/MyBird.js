@@ -13,27 +13,29 @@ class MyBird extends CGFobject {
         this.body = new MyUnitCubeQuad(this.scene);
         this.rightWing = new MyTriangle(this.scene);
         this.leftWing = new MyTriangle(this.scene);
+        //this.branch = new MyTreeBranch(this,2,0.5);
 
         //MyBird State Variables
         this.isAscending = false;
         this.isDescending = false;
-        
         this.catchedBranch = false;
+
         //MyBird Movement Variables
         this.orientation = 0;
 
         this.velocity = 0;
-        this.position = [0, 4, 0];
+        this.position = [0, 3, 0];
 
     }
 
-    updatePosition(t){
+    updatePosition(t, branches){
 
         if (this.isDescending == true){
             this.position[1] -= 0.15;
 
-            if ( this.position[1] < 0.5){
+            if (this.position[1] < 0.5){
                 this.isDescending = false;
+                this.checkProximity(branches);
                 this.isAscending = true;
             }
         }
@@ -69,19 +71,25 @@ class MyBird extends CGFobject {
         
     }
 
+    checkProximity(branches) {
+
+        if(this.catchedBranch){
+
+        }
+        else{
+            for (var i = 0; i < branches.length; i++) {
+         
+                if((Math.abs(this.position[0]-branches[i].position[0]) < 1.5) && (Math.abs(this.position[2]-branches[i].position[2]) < 1.5) && this.position[1] < 0.7 ){
+                    this.branch = branches[i];
+                    branches[i].isCatched = true;
+                    this.catchedBranch = true;
+                }
+            }
+        }
+        
+
+    }
     
-
-    drop(branch){
-        this.catchedBranch = false;
-        branch.isCatched = false;
-    }
-
-    holdBranch(branch){
-        branch.position = this.position;
-        this.catchedBranch = true;
-        branch.isCatched = true;
-    }
-
 
     turn(v){
         this.orientation += 10*v * Math.PI/180;
@@ -97,10 +105,18 @@ class MyBird extends CGFobject {
     }
 
     display(){
+        
+        if(this.catchedBranch){
+            this.branch.position = this.position;
+            this.branch.orientation = -this.orientation;
+            this.branch.display();
+            
+        }
 
         this.scene.pushMatrix();
 
         //Changing Bird Position and Orientation
+        
         this.scene.translate(...this.position);
 
         this.scene.rotate(-this.orientation, 0.0, 1.0, 0.0);

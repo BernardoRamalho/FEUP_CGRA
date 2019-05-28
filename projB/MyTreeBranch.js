@@ -12,7 +12,9 @@ class MyTreeBranch extends CGFobject {
 
         this.isCatched = false;
        
-        this.initPosition();
+        var plusOrMinus1 =  Math.random() < 0.5 ? -1 : 1;
+        var plusOrMinus2 =  Math.random() < 0.5 ? -1 : 1;
+        this.position = [7.5*(Math.random() * plusOrMinus1), 0.5, 7.5*( Math.random() * plusOrMinus2)];
         this.orientation = Math.random() * Math.PI;
         
         
