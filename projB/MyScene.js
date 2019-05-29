@@ -176,11 +176,11 @@ class MyScene extends CGFscene {
         //Apply default appearance
         this.setDefaultAppearance();
 
-        this.lightning.display();
+        //this.lightning.display();
 
         this.pushMatrix();
         this.translate(-6,0,6);
-        this.scale(10,5,10);
+        this.scale(4,2,4);
         this.tree.display();
         this.popMatrix();
 
@@ -191,7 +191,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
-        this.translate(0.0,-0.3,0.0);
+        this.translate(0.0,-0.5,0.0);
         this.terrain.display();
         this.popMatrix();
         
