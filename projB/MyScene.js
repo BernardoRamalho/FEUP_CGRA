@@ -26,6 +26,8 @@ class MyScene extends CGFscene {
         //Relampago
 
         /*this.axiom = "X"; //Define-se duas vezes?
+        this.ruleF = "FF";
+        this.ruleX = "F[-X][X]F[-X]+FX";
         this.angle = 25.0;
         this.iterations = 3;
         this.scaleFactor = 0.5;*/
@@ -174,21 +176,24 @@ class MyScene extends CGFscene {
         //Apply default appearance
         this.setDefaultAppearance();
 
-        
+        this.lightning.display();
 
         this.pushMatrix();
         this.translate(-6,0,6);
         this.scale(10,5,10);
-        //this.tree.display();
+        this.tree.display();
         this.popMatrix();
 
 
         this.pushMatrix();
         this.translate(5.0,1.8,-15);
-        //this.house.display();
+        this.house.display();
         this.popMatrix();
 
-       // this.terrain.display();
+        this.pushMatrix();
+        this.translate(0.0,-0.3,0.0);
+        this.terrain.display();
+        this.popMatrix();
         
         
         // ---- BEGIN Primitive drawing section
@@ -199,12 +204,12 @@ class MyScene extends CGFscene {
         for (var i = 0; i < 4; i++) {
             
             if (this.branches[i].isCatched == false){
-                //this.branches[i].display();
+                this.branches[i].display();
             }
 
         }
                
-            //this.cubeMapDay.display();
+            this.cubeMapDay.display();
             //this.nest.display();
             this.bird.display(); 
             
