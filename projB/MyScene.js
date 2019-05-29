@@ -77,14 +77,14 @@ class MyScene extends CGFscene {
         this.branch3 = new MyTreeBranch(this,2,0.5);  
         this.branch4 = new MyTreeBranch(this,2,0.5);
         this.terrain = new MyTerrain(this);
-        this.house = new MyHouse(this);
+        this.house = new MyHouse(this,5);
         this.cubeMapDay = new MyCubeMap(this, 90, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
         this.nest = new MyNest(this);
         
         //Branches
 
         this.branches = [this.branch1,this.branch2,this.branch3,this.branch4];
-        this.desilignement_values = [Math.random() * -0.3,Math.random() * 0.3,Math.random() * -0.3,Math.random() * 0.3];
+        this.desilignement_values = [5+Math.random() * -0.3,5+Math.random() * 0.3,5+Math.random() * -0.3,5+Math.random() * 0.3];
         this.desilignement_rotation = [Math.random() * Math.PI,Math.random() * Math.PI,Math.random() * Math.PI,Math.random() * Math.PI];
 
 
@@ -123,6 +123,7 @@ class MyScene extends CGFscene {
         }
 
         if (this.gui.isKeyPressed("KeyA")){
+            
             this.bird.turn(-1);
             
         }
@@ -143,6 +144,12 @@ class MyScene extends CGFscene {
             this.bird.isDescending = true;  
         }
 
+        if (this.gui.isKeyPressed("KeyL")){
+
+            this.lightning.display(); 
+            console.log("L");
+        }
+
        
     }
 
@@ -151,7 +158,7 @@ class MyScene extends CGFscene {
         this.bird.updatePosition(t, this.branches);
         this.checkKeys();
         this.bird.updateWings(t);
-        this.lightning.display();    
+            
     }
 
     display() {
@@ -177,6 +184,10 @@ class MyScene extends CGFscene {
         this.setDefaultAppearance();
 
         //this.lightning.display();
+        this.pushMatrix();
+        this.translate(5.0,2,-15);
+        this.house.display();
+        this.popMatrix();
 
         this.pushMatrix();
         this.translate(-6,0,6);
@@ -185,10 +196,6 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
 
-        this.pushMatrix();
-        this.translate(5.0,1.8,-15);
-        this.house.display();
-        this.popMatrix();
 
         this.pushMatrix();
         this.translate(0.0,-0.5,0.0);

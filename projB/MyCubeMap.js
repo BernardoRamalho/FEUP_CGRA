@@ -7,7 +7,7 @@ class MyCubeMap extends CGFobject {
 	constructor(scene, scale, frontTexture, backTexture, leftTexture, rightTexture, topTexture, bottomTexture) {
         super(scene);
         
-		this.scale = scale;
+		this.scale = scale*2;
                 
         //Initialize MyUnitCubeQuad objects
         this.frontQuad = new MyQuad(this.scene, 0.5); //The Front Face of the cube is the one with positive Z value
@@ -96,7 +96,7 @@ class MyCubeMap extends CGFobject {
 
         this.scene.pushMatrix();
        
-        this.scene.translate(0.0, 0.5, 0.0);
+        this.scene.translate(0.0, 0.5/2, 0.0);
        
         this.scene.rotate(Math.PI / 2, 1.0, 0.0, 0.0);
        
@@ -113,7 +113,7 @@ class MyCubeMap extends CGFobject {
         
 		this.scene.pushMatrix();
         
-        this.scene.translate(0.0, -0.5, 0.0);
+        this.scene.translate(0.0, -0.5/2, 0.0);
         
         this.scene.rotate(-Math.PI / 2, 1.0, 0.0, 0.0);
         
@@ -130,7 +130,7 @@ class MyCubeMap extends CGFobject {
 
         this.scene.pushMatrix();
         
-        this.scene.translate(0, 0, -0.5);
+        this.scene.translate(0, 0, -0.5/2);
         
         this.backMaterial.apply();
         
@@ -145,7 +145,7 @@ class MyCubeMap extends CGFobject {
 
         this.scene.pushMatrix();
         
-        this.scene.translate(-0.5 , 0, 0);
+        this.scene.translate(-0.5/2 , 0, 0);
         
         this.scene.rotate(Math.PI / 2, 0.0, 1.0, 0.0);
         
@@ -160,7 +160,7 @@ class MyCubeMap extends CGFobject {
 
         this.scene.pushMatrix();
         
-        this.scene.translate(0.5, 0, 0);
+        this.scene.translate(0.5/2, 0, 0);
         
         this.scene.rotate(-Math.PI / 2, 0.0, 1.0, 0.0);
         
@@ -175,7 +175,7 @@ class MyCubeMap extends CGFobject {
 
         this.scene.pushMatrix();
         
-        this.scene.translate(0.0, 0.0, 0.5);
+        this.scene.translate(0.0, 0.0, 0.5/2);
         
         this.scene.rotate(-Math.PI, 0, 1.0, 0.0);		
         

@@ -81,6 +81,72 @@ class MyLightning extends CGFobject {
         console.log("Final: "+this.axiom);
         console.log("(length: "+this.axiom.length+")");
     }
+    iteration(i){
+
+        switch(this.axiom[i]){
+            case "+":
+                // roda a esquerda
+                this.scene.rotate(this.angle, 0, 0, 1);
+                break;
+
+            case "-":
+                // roda a direita
+                this.scene.rotate(-this.angle, 0, 0, 1);
+                break;
+
+            case "[":
+                // push
+                this.scene.pushMatrix();
+                break;
+
+            case "\\":
+                // roda em sentido positivo nos eixos XX
+                this.scene.rotate(this.angle, 1, 0, 0);
+                break;
+
+            case "/":
+                // roda em sentido negativo nos eixos XX
+                this.scene.rotate(-this.angle, 1, 0, 0);
+                break;
+
+            case "^":
+                // roda em sentido positivo nos exios yy
+                this.scene.rotate(this.angle, 0, 1, 0);
+                break;
+
+            case "&":
+                //roda em sentido negativo nos eixos XX
+                this.scene.rotate(-this.angle, 0, 1, 0);
+                break;
+
+            case "]":
+                // pop
+                this.scene.popMatrix();
+                break;
+
+            // processa primitiva definida na gramatica, se existir
+            default:
+                var primitive=this.grammar[this.axiom[i]];
+
+                if ( primitive )
+                {
+                    this.whiteMaterial.apply();
+                    primitive.display();
+                    this.scene.translate(0, 1, 0);
+                }
+                break;
+        }
+        var primitive=this.grammar[this.axiom[i]];
+
+                if ( primitive )
+                {
+                    this.whiteMaterial.apply();
+                    primitive.display();
+                    this.scene.translate(0, 1, 0);
+                }
+        
+        
+    }
 
     display(){
         this.scene.pushMatrix();
@@ -90,61 +156,11 @@ class MyLightning extends CGFobject {
 
         // percorre a cadeia de caracteres
         for (i=0; i<this.axiom.length; ++i){
+            setInterval(this.iteration(i),10000);
+            console.log("A");
 
             // verifica se sao caracteres especiais
-            switch(this.axiom[i]){
-                case "+":
-                    // roda a esquerda
-                    this.scene.rotate(this.angle, 0, 0, 1);
-                    break;
-
-                case "-":
-                    // roda a direita
-                    this.scene.rotate(-this.angle, 0, 0, 1);
-                    break;
-
-                case "[":
-                    // push
-                    this.scene.pushMatrix();
-                    break;
-
-                case "\\":
-                    // roda em sentido positivo nos eixos XX
-                    this.scene.rotate(this.angle, 1, 0, 0);
-                    break;
-
-                case "/":
-                    // roda em sentido negativo nos eixos XX
-                    this.scene.rotate(-this.angle, 1, 0, 0);
-                    break;
-
-                case "^":
-                    // roda em sentido positivo nos exios yy
-                    this.scene.rotate(this.angle, 0, 1, 0);
-                    break;
-
-                case "&":
-                    //roda em sentido negativo nos eixos XX
-                    this.scene.rotate(-this.angle, 0, 1, 0);
-                    break;
-
-                case "]":
-                    // pop
-                    this.scene.popMatrix();
-                    break;
-
-                // processa primitiva definida na gramatica, se existir
-                default:
-                    var primitive=this.grammar[this.axiom[i]];
-
-                    if ( primitive )
-                    {
-                        this.whiteMaterial.apply();
-                        primitive.display();
-                        this.scene.translate(0, 1, 0);
-                    }
-                    break;
-            }
+            
         }
         //this.super.display();
         this.scene.popMatrix();

@@ -4,16 +4,17 @@
  * @param scene - Reference to MyScene object
  */
 class MyUnitCubeQuad extends CGFobject {
-	constructor(scene, frontTexture, backTexture, leftTexture, rightTexture, topTexture, bottomTexture) {
+	constructor(scene, frontTexture, backTexture, leftTexture, rightTexture, topTexture, bottomTexture,length) {
         super(scene);
+        this.length = length;
                 
         //Initialize MyUnitCubeQuad objects
-        this.frontQuad = new MyQuad(this.scene, 0.5); //The Front Face of the cube is the one with positive Z value
-        this.leftQuad = new MyQuad(this.scene, 0.5); //In relation to us, this is, the one with negative X value
-        this.rightQuad = new MyQuad(this.scene, 0.5);
-        this.backQuad = new MyQuad(this.scene, 0.5);
-        this.topQuad = new MyQuad(this.scene, 0.5);
-        this.bottomQuad = new MyQuad(this.scene, 0.5);
+        this.frontQuad = new MyQuad(this.scene, length); //The Front Face of the cube is the one with positive Z value
+        this.leftQuad = new MyQuad(this.scene, length); //In relation to us, this is, the one with negative X value
+        this.rightQuad = new MyQuad(this.scene, length);
+        this.backQuad = new MyQuad(this.scene, length);
+        this.topQuad = new MyQuad(this.scene, length);
+        this.bottomQuad = new MyQuad(this.scene, length);
 
         //Initialize Textures
         this.frontTexture = frontTexture;
@@ -90,7 +91,7 @@ class MyUnitCubeQuad extends CGFobject {
         //Displaying Top Quad
         this.scene.pushMatrix();
         
-        this.scene.translate(0.0, 0.5, 0.0);
+        this.scene.translate(0.0, this.length/2, 0.0);
         
         this.scene.rotate(-Math.PI/2, 1.0, 0.0, 0.0);
         
@@ -105,7 +106,8 @@ class MyUnitCubeQuad extends CGFobject {
         //Displaying Back Quad
         this.scene.pushMatrix();
         
-        this.scene.translate(0, 0, -0.5);
+        this.scene.translate(0, 0, -this.length/2);
+        
         
         this.scene.rotate(Math.PI, 1.0, 0.0, 0.0);
         
@@ -120,7 +122,7 @@ class MyUnitCubeQuad extends CGFobject {
         //Displaying Left Quad
         this.scene.pushMatrix();
         
-        this.scene.translate(-0.5,0,0);
+        this.scene.translate(-this.length/2,0,0);
         
         this.scene.rotate(-Math.PI/2, 0.0, 1.0, 0.0);
         
@@ -133,7 +135,7 @@ class MyUnitCubeQuad extends CGFobject {
         //Displaying Right Quad
         this.scene.pushMatrix();
         
-        this.scene.translate(0.5,0,0);
+        this.scene.translate(this.length/2,0,0);
         
         this.scene.rotate(Math.PI/2, 0.0, 1.0, 0.0);
         
@@ -146,7 +148,7 @@ class MyUnitCubeQuad extends CGFobject {
         //Displaying Front Quad
         this.scene.pushMatrix();
         
-        this.scene.translate(0.0, 0.0, 0.5);
+        this.scene.translate(0.0, 0.0, this.length/2);
         
         this.frontMaterial.apply();
         
@@ -157,7 +159,7 @@ class MyUnitCubeQuad extends CGFobject {
         //Displaying Bottom Quad
         this.scene.pushMatrix();
         
-        this.scene.translate(0.0, -0.5, 0.0);
+        this.scene.translate(0.0, -this.length/2, 0.0);
         
         this.scene.rotate(Math.PI/2, 1.0, 0.0, 0.0);
         
