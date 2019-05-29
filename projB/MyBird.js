@@ -173,7 +173,7 @@ class MyBird extends CGFobject {
         //Changing Bird Position and Orientation
         
         this.scene.translate(...this.position);
-        //this.scene.scale(10,10,10);
+        this.scene.scale(10,10,10);
 
         this.scene.rotate(-this.orientation, 0.0, 1.0, 0.0);
 

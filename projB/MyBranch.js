@@ -16,17 +16,20 @@ class MyBranch extends CGFobject {
     initMaterials() {
 
         //Branch Material
-        this.brownMaterial = new CGFappearance(this.scene);
-        this.brownMaterial.setAmbient(0.464, 0.207, 0.0, 1.0);
-        this.brownMaterial.setDiffuse(0.464, 0.207, 0.0, 1.0);
-        this.brownMaterial.setShininess(10.0);
+        this.branchMaterial = new CGFappearance(this.scene);
+        this.branchMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.branchMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.branchMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.branchMaterial.setShininess(10.0);
+        this.branchMaterial.loadTexture("images/trunk.jpg"); 
+        this.branchMaterial.setTextureWrap('REPEAT', 'REPEAT');
     }
 
     display() {
 
         this.scene.pushMatrix();
 
-        this.brownMaterial.apply();
+        this.branchMaterial.apply();
 
         this.branch.display();
         

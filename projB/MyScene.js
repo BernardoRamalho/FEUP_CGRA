@@ -25,11 +25,18 @@ class MyScene extends CGFscene {
 
         //Relampago
 
-        this.axiom = "X";
+        /*this.axiom = "X"; //Define-se duas vezes?
         this.angle = 25.0;
         this.iterations = 3;
-        this.scaleFactor = 0.5;
+        this.scaleFactor = 0.5;*/
         this.lightning = new MyLightning(this);
+
+        this.axiom = "X";
+        this.ruleF = "FF";
+        this.ruleX = "F[-X][X]F[-X]+FX";
+        this.angle = 30.0;
+        this.iterations = 4;
+        this.scaleFactor = 0.5;
         this.tree = new MyLSPlant(this);
 
         this.doGenerate = function () {
@@ -68,6 +75,7 @@ class MyScene extends CGFscene {
         this.branch3 = new MyTreeBranch(this,2,0.5);  
         this.branch4 = new MyTreeBranch(this,2,0.5);
         this.terrain = new MyTerrain(this);
+        this.house = new MyHouse(this);
         this.cubeMapDay = new MyCubeMap(this, 90, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
         this.nest = new MyNest(this);
         
@@ -171,10 +179,16 @@ class MyScene extends CGFscene {
         this.pushMatrix();
         this.translate(-6,0,6);
         this.scale(10,5,10);
-        this.tree.display();
+        //this.tree.display();
         this.popMatrix();
-        
-        this.terrain.display();
+
+
+        this.pushMatrix();
+        this.translate(5.0,1.8,-15);
+        //this.house.display();
+        this.popMatrix();
+
+       // this.terrain.display();
         
         
         // ---- BEGIN Primitive drawing section
@@ -185,13 +199,13 @@ class MyScene extends CGFscene {
         for (var i = 0; i < 4; i++) {
             
             if (this.branches[i].isCatched == false){
-                this.branches[i].display();
+                //this.branches[i].display();
             }
 
         }
                
-            this.cubeMapDay.display();
-            this.nest.display();
+            //this.cubeMapDay.display();
+            //this.nest.display();
             this.bird.display(); 
             
             // ---- END Primitive drawing section

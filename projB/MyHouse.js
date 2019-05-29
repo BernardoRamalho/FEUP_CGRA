@@ -12,7 +12,7 @@ class MyHouse extends CGFobject {
         this.cube = new MyUnitCubeQuad(scene, 'images/wood-house-door.jpg', 'images/wood-house.jpg', 'images/wood-house-window.jpg', 'images/wood-house-window.jpg', 'images/wood-house.jpg', 'images/wood-house.jpg');
         this.pyramid = new MyPyramid(scene, 4, 4, 0.5, 2);
         this.prism = new MyPrism(scene, 8, 1, 2, 0.2);
-        this.quad = new MyQuad(scene, 0.5);
+    
 
         this.initMaterials();
     }
@@ -34,13 +34,7 @@ class MyHouse extends CGFobject {
         this.collumnMaterial.setShininess(10.0);
         this.collumnMaterial.loadTexture('images/collumn.jpg');
         this.collumnMaterial.setTextureWrap('REPEAT', 'REPEAT');
-    
-        this.poolMaterial = new CGFappearance(this.scene);
-        this.poolMaterial.setDiffuse(1, 1, 1, 1.0);
-        this.poolMaterial.setSpecular(1, 1, 1, 1.0);
-        this.poolMaterial.setShininess(10.0);
-        this.poolMaterial.loadTexture('images/pool.jpg');
-        this.poolMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
     }
     
     display()
@@ -129,20 +123,7 @@ class MyHouse extends CGFobject {
         
         this.scene.popMatrix();
 
-        //Pool
-        this.scene.pushMatrix();
-        
-        this.scene.translate(0, -0.9, 10);
-        
-        this.scene.rotate(-Math.PI/2, 1, 0, 0);
-        
-        this.scene.scale(10, 10, 10); 
-        
-        this.poolMaterial.apply();
-        
-        this.quad.display();
-        
-        this.scene.popMatrix(); 
+       
     }
 }
 
