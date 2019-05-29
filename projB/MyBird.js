@@ -19,10 +19,10 @@ class MyBird extends CGFobject {
         this.leftLeg = new MyCylinder(this.scene,5,5,0.4,0.1);
         this.righttLeg = new MyCylinder(this.scene,5,5,0.4,0.1);
         this.foot = new MyCylinder(this.scene,5,5,0.2,0.05);
-        this.rightWingBeggining = new MyQuad(this.scene,0.8);
+        this.rightWingBeggining = new MyQuad(this.scene,0.8*2);
         this.rightWingEnd = new MyTriangle(this.scene,0.8);
         this.leftWingEnd = new MyTriangle(this.scene,0.8);
-        this.leftWingBeggining = new MyQuad(this.scene,0.8);
+        this.leftWingBeggining = new MyQuad(this.scene,0.8*2);
         this.tail = new MyTriangle(this.scene,0.5);
 
 
@@ -152,6 +152,7 @@ class MyBird extends CGFobject {
 
     turn(v){
         this.orientation += 10*v * Math.PI/180;
+    
     }
 
     updateWings(t){

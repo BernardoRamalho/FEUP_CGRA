@@ -156,7 +156,8 @@ class MyLightning extends CGFobject {
 
         // percorre a cadeia de caracteres
         for (i=0; i<this.axiom.length; ++i){
-            setInterval(this.iteration(i),10000);
+            //setInterval(this.iteration(i),10000);
+            //setTimeout(this.iteration(i),10000);
             console.log("A");
 
             // verifica se sao caracteres especiais
