@@ -9,18 +9,22 @@ class MyBird extends CGFobject {
         super(scene);
 
         //MyBird Objects
-        this.topBeak = new MyPrism(this.scene, 3, 3, 0.3, 0.1);
+        this.topBeak = new MyPrism(this.scene, 3, 3, 0.2, 0.05);
+        this.bottomBeak = new MyPrism(this.scene, 3, 3, 0.1, 0.05);
         this.head = new MyUnevenCylinder(this.scene,5,4,0.1,0.2,0.25);
         this.head1 = new MyUnevenCylinder(this.scene,5,4,0.3,0.25,0.1);
         this.body = new MyCylinder(this.scene,5,4,1.0,0.4);
         this.neck = new MyUnevenCylinder(this.scene, 5, 4, 0.4, 0.4,0.2);
         this.bottom = new MyUnevenCylinder(this.scene, 5, 4, 0.4, 0.05,0.4);
-        this.leftLeg = new MyCylinder(this.scene,5,5,0.5,0.1);
-        this.righttLeg = new MyCylinder(this.scene,5,5,0.5,0.1);
+        this.leftLeg = new MyCylinder(this.scene,5,5,0.4,0.1);
+        this.righttLeg = new MyCylinder(this.scene,5,5,0.4,0.1);
+        this.foot = new MyCylinder(this.scene,5,5,0.2,0.05);
         this.rightWingBeggining = new MyQuad(this.scene,0.8);
         this.rightWingEnd = new MyTriangle(this.scene,0.8);
         this.leftWingEnd = new MyTriangle(this.scene,0.8);
         this.leftWingBeggining = new MyQuad(this.scene,0.8);
+        this.tail = new MyTriangle(this.scene,0.5);
+
 
         //this.branch = new MyTreeBranch(this,2,0.5);
 
@@ -212,12 +216,23 @@ class MyBird extends CGFobject {
         //Drawing Top Beak
 
         this.scene.pushMatrix();
-        this.scene.translate(0.8,0,0);
+        this.scene.translate(0.8,0.05,0);
         this.scene.rotate(-90*Math.PI/180,0,0,1);
-        this.scene.rotate(180*Math.PI/180,0,0,1);
+        //this.scene.rotate(180*Math.PI/180,0,0,1);
         this.beakMaterial.apply();
         this.topBeak.display();
         this.scene.popMatrix();
+
+        //Drawing Bottom Beak
+
+        this.scene.pushMatrix();
+        this.scene.translate(0.8,-0.05,0);
+        this.scene.rotate(-90*Math.PI/180,0,0,1);
+        //this.scene.rotate(180*Math.PI/180,0,0,1);
+        this.beakMaterial.apply();
+        this.bottomBeak.display();
+        this.scene.popMatrix();
+
 
         //Drawing Body
         
@@ -251,6 +266,25 @@ class MyBird extends CGFobject {
         this.scene.rotate(90*Math.PI/180,0,0,1);
         this.leftLeg.display();
         this.scene.popMatrix();
+        
+        //Drawing Left Foot
+
+        this.scene.pushMatrix();
+        this.scene.translate(-1.4,-0.2,0.2);
+        this.scene.rotate(90*Math.PI/180,0,0,1);
+        this.beakMaterial.apply();
+        this.foot.display();
+        this.scene.popMatrix();
+
+        //Drawing Left Foot
+
+        this.scene.pushMatrix();
+        this.scene.translate(-1.4,-0.2,-0.2);
+        this.scene.rotate(90*Math.PI/180,0,0,1);
+        this.beakMaterial.apply();
+        this.foot.display();
+        this.scene.popMatrix();
+
 
         //Drawing the Left Wing
         this.scene.pushMatrix();
@@ -305,6 +339,15 @@ class MyBird extends CGFobject {
         this.scene.popMatrix();
 
 
+        //Tail Drawing
+
+        this.scene.pushMatrix();
+        this.scene.translate(-1.7,0,0);
+        this.scene.rotate(3*Math.PI/4, 0, 1, 0);
+        this.scene.rotate(-Math.PI/2, 1, 0, 0);
+        this.headMaterial.apply();
+        this.tail.display();
+        this.scene.popMatrix();
 
 
         this.scene.popMatrix();
