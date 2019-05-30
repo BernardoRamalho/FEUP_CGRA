@@ -166,19 +166,6 @@ class MyBird extends CGFobject {
 
     display(){
         
-<<<<<<< HEAD
-=======
-        if(this.catchedBranch){
-            //this.branch.position[0] = this.position[0]-1;
-            //this.branch.position[1] = this.position[1]-1;
-            //this.branch.position[2] = this.position[2];
-            this.branch.position = this.position;
-            this.branch.orientation = -this.orientation;
-            this.branch.display();
-            
-        }
-
->>>>>>> 5f68e0d2edae86bea91ff41ea8c9fc2f1c182202
         this.scene.pushMatrix();
 
         //Changing Bird Position and Orientation
