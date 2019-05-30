@@ -25,20 +25,20 @@ class MyScene extends CGFscene {
 
         //Relampago
 
-        /*this.axiom = "X"; //Define-se duas vezes?
+        this.axiom = "X"; //Define-se duas vezes?
         this.ruleF = "FF";
         this.ruleX = "F[-X][X]F[-X]+FX";
         this.angle = 25.0;
         this.iterations = 3;
-        this.scaleFactor = 0.5;*/
+        this.scaleFactor = 0.5;
         this.lightning = new MyLightning(this);
 
-        this.axiom = "X";
+      /*  this.axiom = "X";
         this.ruleF = "FF";
         this.ruleX = "F[-X][X]F[-X]+FX";
         this.angle = 30.0;
         this.iterations = 4;
-        this.scaleFactor = 0.5;
+        this.scaleFactor = 0.5;*/
         this.tree = new MyLSPlant(this);
 
         this.doGenerate = function () {
@@ -80,6 +80,7 @@ class MyScene extends CGFscene {
         this.house = new MyHouse(this,5);
         this.cubeMapDay = new MyCubeMap(this, 90, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
         //this.nest = new MyNest(this);
+        this.displayLightning = false;
         
         //Branches
 
@@ -106,7 +107,7 @@ class MyScene extends CGFscene {
         this.setShininess(10.0);
     }
 
-    checkKeys() {
+    checkKeys(t) {
 
         var text="Keys pressed: ";
         var keysPressed=false;
@@ -146,8 +147,9 @@ class MyScene extends CGFscene {
 
         if (this.gui.isKeyPressed("KeyL")){
 
-            this.lightning.display(); 
-            console.log("L");
+            this.lightning.startAnimation(t); 
+            this.lightning.displayLightning = true;
+        
         }
 
        
@@ -156,8 +158,12 @@ class MyScene extends CGFscene {
     update(t){
         
         this.bird.updatePosition(t, this.branches);
-        this.checkKeys();
+        this.checkKeys(t);
         this.bird.updateWings(t);
+
+        if (this.lightning.displayLightning){
+            this.lightning.update(t);
+        }
             
     }
 
@@ -217,7 +223,7 @@ class MyScene extends CGFscene {
         }
                
             this.cubeMapDay.display();
-            //this.nest.display();
+            this.lightning.display();
             this.bird.display(); 
             
             // ---- END Primitive drawing section
