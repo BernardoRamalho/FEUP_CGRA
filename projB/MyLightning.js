@@ -7,6 +7,10 @@ class MyLightning extends CGFobject {
 	constructor(scene) {
         super(scene);
         this.init();
+
+        this.depth = 0;
+        this.displayLightning = false;
+
     }
 
     init(){
@@ -27,8 +31,8 @@ class MyLightning extends CGFobject {
     // cria o lexico da gramática
     initGrammar(){
         this.grammar = {
-            "F": new MyQuad(this.scene, 0.5),
-            "X": new MyQuad(this.scene, 0.5),
+            "F": new MyQuad(this.scene, 1),
+            "X": new MyQuad(this.scene, 1),
         };
     }
 
@@ -81,71 +85,22 @@ class MyLightning extends CGFobject {
         console.log("Final: "+this.axiom);
         console.log("(length: "+this.axiom.length+")");
     }
-    iteration(i){
+    
 
-        switch(this.axiom[i]){
-            case "+":
-                // roda a esquerda
-                this.scene.rotate(this.angle, 0, 0, 1);
-                break;
-
-            case "-":
-                // roda a direita
-                this.scene.rotate(-this.angle, 0, 0, 1);
-                break;
-
-            case "[":
-                // push
-                this.scene.pushMatrix();
-                break;
-
-            case "\\":
-                // roda em sentido positivo nos eixos XX
-                this.scene.rotate(this.angle, 1, 0, 0);
-                break;
-
-            case "/":
-                // roda em sentido negativo nos eixos XX
-                this.scene.rotate(-this.angle, 1, 0, 0);
-                break;
-
-            case "^":
-                // roda em sentido positivo nos exios yy
-                this.scene.rotate(this.angle, 0, 1, 0);
-                break;
-
-            case "&":
-                //roda em sentido negativo nos eixos XX
-                this.scene.rotate(-this.angle, 0, 1, 0);
-                break;
-
-            case "]":
-                // pop
-                this.scene.popMatrix();
-                break;
-
-            // processa primitiva definida na gramatica, se existir
-            default:
-                var primitive=this.grammar[this.axiom[i]];
-
-                if ( primitive )
-                {
-                    this.whiteMaterial.apply();
-                    primitive.display();
-                    this.scene.translate(0, 1, 0);
-                }
-                break;
-        }
-        var primitive=this.grammar[this.axiom[i]];
-
-                if ( primitive )
-                {
-                    this.whiteMaterial.apply();
-                    primitive.display();
-                    this.scene.translate(0, 1, 0);
-                }
+    update(t){
+        this.depth += Math.ceil(this.axiom.length * (t -this.startTime) / 1000 );
         
-        
+        if (t - this.startTime > 1000){
+            this.displayLightning = false;
+            this.depth = 0;
+        } 
+
+    }
+
+    startAnimation(t){
+        this.startTime = t;
+
+        this.depth = 0;
     }
 
     display(){
@@ -155,12 +110,64 @@ class MyLightning extends CGFobject {
         var i;
 
         // percorre a cadeia de caracteres
-        for (i=0; i<this.axiom.length; ++i){
-            //setInterval(this.iteration(i),10000);
-            //setTimeout(this.iteration(i),10000);
-            console.log("A");
-
-            // verifica se sao caracteres especiais
+        for (i=0; i<this.depth; ++i){
+            
+            switch(this.axiom[i]){
+                case "+":
+                    // roda a esquerda
+                    this.scene.rotate(this.angle, 0, 0, 1);
+                    break;
+    
+                case "-":
+                    // roda a direita
+                    this.scene.rotate(-this.angle, 0, 0, 1);
+                    break;
+    
+                case "[":
+                    // push
+                    this.scene.pushMatrix();
+                    break;
+    
+                case "\\":
+                    // roda em sentido positivo nos eixos XX
+                    this.scene.rotate(this.angle, 1, 0, 0);
+                    break;
+    
+                case "/":
+                    // roda em sentido negativo nos eixos XX
+                    this.scene.rotate(-this.angle, 1, 0, 0);
+                    break;
+    
+                case "^":
+                    // roda em sentido positivo nos exios yy
+                    this.scene.rotate(this.angle, 0, 1, 0);
+                    break;
+    
+                case "&":
+                    //roda em sentido negativo nos eixos XX
+                    this.scene.rotate(-this.angle, 0, 1, 0);
+                    break;
+    
+                case "]":
+                    // pop
+                    this.scene.popMatrix();
+                    break;
+    
+                // processa primitiva definida na gramatica, se existir
+                default:
+                    var primitive=this.grammar[this.axiom[i]];
+    
+                    if ( primitive )
+                    {
+                        this.whiteMaterial.apply();
+                        this.scene.pushMatrix();
+                        this.scene.scale(0.5, 2, 0.5);
+                        primitive.display();
+                        this.scene.popMatrix();
+                        this.scene.translate(0, 1, 0);
+                    }
+                    break;
+            }
             
         }
         //this.super.display();

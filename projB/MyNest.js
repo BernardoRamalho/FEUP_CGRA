@@ -6,8 +6,9 @@
 class MyNest extends CGFobject {
 	constructor(scene) {
         super(scene);
+                
         //Initialize MyPlane objects
-        //this.nest_Branch = new MyTreeBranch(this,2,0.5);
+        this.nest_Branch= new MyTreeBranch(this,2,0.5);
         this.position = [10.0,0.0,0.0]
         this.initMaterials();
     }
@@ -28,13 +29,13 @@ class MyNest extends CGFobject {
 
 
     display() {
-        var i, j;
+
         for (i = 0; i < 3; i++){
             for (j = 0; j < 6 + 6*i; j++){
-                //this.nest_Branch.position = [0, i, 0]
+
+                this.nest_Branch.position = [Math.]
                 
             }
         }
     }
-
 }

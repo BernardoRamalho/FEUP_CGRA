@@ -19,10 +19,10 @@ class MyBird extends CGFobject {
         this.leftLeg = new MyCylinder(this.scene,5,5,0.4,0.1);
         this.righttLeg = new MyCylinder(this.scene,5,5,0.4,0.1);
         this.foot = new MyCylinder(this.scene,5,5,0.2,0.05);
-        this.rightWingBeggining = new MyQuad(this.scene,0.8*2);
+        this.rightWingBeggining = new MyTwoSidedQuad(this.scene,0.8*2);
         this.rightWingEnd = new MyTriangle(this.scene,0.8);
         this.leftWingEnd = new MyTriangle(this.scene,0.8);
-        this.leftWingBeggining = new MyQuad(this.scene,0.8*2);
+        this.leftWingBeggining = new MyTwoSidedQuad(this.scene,0.8*2);
         this.tail = new MyTriangle(this.scene,0.5);
 
 
@@ -35,6 +35,7 @@ class MyBird extends CGFobject {
 
         //MyBird Movement Variables
         this.orientation = 0;
+        this.scaleFactor = 1;
 
         this.velocity = 0;
         this.position = [0, 3, 0];
@@ -129,11 +130,11 @@ class MyBird extends CGFobject {
     checkProximity(branches, nest) {
 
         if(this.catchedBranch){
-            if((Math.abs(this.position[0]-nest.position[0]) < 1.5) && (Math.abs(this.position[2]-this.branch.position[2]) < 1.5) && this.position[1] < 0.7 ){
-                this.branch.position = this.position;
-                this.branch.isCatched = false;
-                this.catchedBranch = false;
-            }
+           // if((Math.abs(this.position[0]-nest.position[0]) < 1.5) && (Math.abs(this.position[2]-this.branch.position[2]) < 1.5) && this.position[1] < 0.7 ){
+                //this.branch.position = this.position;
+                //this.branch.isCatched = false;
+                //this.catchedBranch = false;
+            //}
         }
         else{
             for (var i = 0; i < branches.length; i++) {
@@ -152,7 +153,6 @@ class MyBird extends CGFobject {
 
     turn(v){
         this.orientation += 10*v * Math.PI/180;
-    
     }
 
     updateWings(t){
@@ -166,16 +166,6 @@ class MyBird extends CGFobject {
 
     display(){
         
-        if(this.catchedBranch){
-            //this.branch.position[0] = this.position[0]-1;
-            //this.branch.position[1] = this.position[1]-1;
-            //this.branch.position[2] = this.position[2];
-            this.branch.position = this.position;
-            this.branch.orientation = -this.orientation;
-            this.branch.display();
-            
-        }
-
         this.scene.pushMatrix();
 
         //Changing Bird Position and Orientation
@@ -184,6 +174,8 @@ class MyBird extends CGFobject {
         //this.scene.scale(10,10,10);
 
         this.scene.rotate(-this.orientation, 0.0, 1.0, 0.0);
+
+        this.scene.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
         if(this.isDescending && this.velocity != 0){
             this.scene.rotate(-Math.PI/8, 0, 0, 1);
@@ -207,6 +199,15 @@ class MyBird extends CGFobject {
         this.headMaterial.apply();
         this.head1.display();
         this.scene.popMatrix();
+
+        if(this.catchedBranch){
+            this.branch.position = [0, 0, 0];
+            this.scene.pushMatrix();
+            this.scene.translate(0.8, 0, 0);
+            this.scene.rotate(Math.PI,0 , 1, 0);
+            this.branch.display(); 
+            this.scene.popMatrix();
+        }
 
         //Drawing Neck
         
