@@ -79,7 +79,7 @@ class MyScene extends CGFscene {
         this.terrain = new MyTerrain(this);
         this.house = new MyHouse(this,5);
         this.cubeMapDay = new MyCubeMap(this, 90, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
-        this.nest = new MyNest(this);
+        //this.nest = new MyNest(this);
         
         //Branches
 
