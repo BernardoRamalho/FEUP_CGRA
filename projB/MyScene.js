@@ -221,10 +221,17 @@ class MyScene extends CGFscene {
             }
 
         }
+        this.bird.display(); 
                
-            this.cubeMapDay.display();
-            this.lightning.display();
-            this.bird.display(); 
+        this.cubeMapDay.display();
+
+        this.pushMatrix();
+        this.scale(5,5,5);
+        this.translate(0,5,0);
+        this.rotate(Math.PI,0,0,1);
+        this.lightning.display();
+        this.popMatrix();
+            
             
             // ---- END Primitive drawing section
         }

@@ -31,8 +31,8 @@ class MyLightning extends CGFobject {
     // cria o lexico da gramática
     initGrammar(){
         this.grammar = {
-            "F": new MyQuad(this.scene, 1),
-            "X": new MyQuad(this.scene, 1),
+            "F": new MyTwoSidedQuad(this.scene, 1),
+            "X": new MyTwoSidedQuad(this.scene, 1),
         };
     }
 
@@ -161,7 +161,7 @@ class MyLightning extends CGFobject {
                     {
                         this.whiteMaterial.apply();
                         this.scene.pushMatrix();
-                        this.scene.scale(0.5, 2, 0.5);
+                        this.scene.scale(0.2, 2, 0.2);
                         primitive.display();
                         this.scene.popMatrix();
                         this.scene.translate(0, 1, 0);
