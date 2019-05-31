@@ -32,6 +32,7 @@ class MyScene extends CGFscene {
         this.iterations = 3;
         this.scaleFactor = 0.5;
         this.lightning = new MyLightning(this);
+        
 
       /*  this.axiom = "X";
         this.ruleF = "FF";
@@ -79,8 +80,8 @@ class MyScene extends CGFscene {
         this.terrain = new MyTerrain(this);
         this.house = new MyHouse(this,5);
         this.cubeMapDay = new MyCubeMap(this, 90, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
-        //this.nest = new MyNest(this);
-        this.displayLightning = false;
+        this.nest = new MyNest(this,15);
+       // this.semiSphere = new MySemiSphere(this,10,3,5);
         
         //Branches
 
@@ -189,7 +190,7 @@ class MyScene extends CGFscene {
         //Apply default appearance
         this.setDefaultAppearance();
 
-        //this.lightning.display();
+        
         this.pushMatrix();
         this.translate(5.0,2,-15);
         this.house.display();
@@ -222,6 +223,13 @@ class MyScene extends CGFscene {
 
         }
         this.bird.display(); 
+
+        //this.semiSphere.display();
+        this.pushMatrix();
+        this.translate(...this.nest.position);
+        this.nest.display();
+        this.popMatrix();
+        
                
         this.cubeMapDay.display();
 
