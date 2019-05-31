@@ -11,6 +11,29 @@ class MyLightning extends CGFobject {
         this.depth = 0;
         this.displayLightning = false;
 
+        
+
+        this.axiom = "X"; //Define-se duas vezes?
+        this.ruleF = "FF";
+        this.ruleX = "F[-X][X]F[-X]+FX";
+        this.angle = 25.0;
+        this.iterations = 3;
+        this.scaleFactor = 0.5;
+        
+        
+        
+        this.generate(
+            this.axiom,
+            {
+                "F": [ "FF" ],
+                "X": [ "F[-X][X]F[-X]+FX"]//,"F[-X][X]F[-X]+X", "F[-X][x]+X", "F[+X]-X", "F[/X][X]F[\\\\X]+X", "F[X][X]X", "F[/X]\\X", "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X" ]
+            },
+            this.angle,
+            this.iterations,
+            this.scaleFactor
+        );
+        
+
     }
 
     init(){

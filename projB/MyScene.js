@@ -23,51 +23,7 @@ class MyScene extends CGFscene {
         this.enableTextures(true);
         this.setUpdatePeriod(50);
 
-        //Relampago
-
-        this.axiom = "X"; //Define-se duas vezes?
-        this.ruleF = "FF";
-        this.ruleX = "F[-X][X]F[-X]+FX";
-        this.angle = 25.0;
-        this.iterations = 3;
-        this.scaleFactor = 0.5;
-        this.lightning = new MyLightning(this);
-        
-
-      /*  this.axiom = "X";
-        this.ruleF = "FF";
-        this.ruleX = "F[-X][X]F[-X]+FX";
-        this.angle = 30.0;
-        this.iterations = 4;
-        this.scaleFactor = 0.5;*/
-        this.tree = new MyLSPlant(this);
-
-        this.doGenerate = function () {
-            this.lightning.generate(
-                this.axiom,
-                {
-                    "F": [ "FF" ],
-                    "X": [ "F[-X][X]F[-X]+FX"]//,"F[-X][X]F[-X]+X", "F[-X][x]+X", "F[+X]-X", "F[/X][X]F[\\\\X]+X", "F[X][X]X", "F[/X]\\X", "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X" ]
-                },
-                this.angle,
-                this.iterations,
-                this.scaleFactor
-            );
-            this.tree.generate(
-                this.axiom,
-                {
-                    "F": [ "FF" ],
-                    "X": [ "F[-X][X]F[-X]+X", "F[-X][x]+X", "F[+X]-X", "F[/X][X]F[\\\\X]+X", "F[\\X][X]/X", "F[/X]\\X", "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X"]
-                },
-                this.angle,
-                this.iterations,
-                this.scaleFactor
-            );
-
-        
-        }
-
-        this.doGenerate();
+           
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
@@ -81,6 +37,8 @@ class MyScene extends CGFscene {
         this.house = new MyHouse(this,5);
         this.cubeMapDay = new MyCubeMap(this, 90, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
         this.nest = new MyNest(this,15);
+        this.tree = new MyLSPlant(this);
+        this.lightning = new MyLightning(this);
        // this.semiSphere = new MySemiSphere(this,10,3,5);
         
         //Branches
@@ -98,9 +56,11 @@ class MyScene extends CGFscene {
         this.lights[0].enable();
         this.lights[0].update();
     }
+
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(60, 60, 60), vec3.fromValues(0, 0, 0));
     }
+
     setDefaultAppearance() {
         this.setAmbient(0.2, 0.4, 0.8, 1.0);
         this.setDiffuse(0.2, 0.4, 0.8, 1.0);
@@ -114,46 +74,30 @@ class MyScene extends CGFscene {
         var keysPressed=false;
         // Check for key codes e.g. in https://keycode.info/
         
-        if (this.gui.isKeyPressed("KeyW")) {
+        if (this.gui.isKeyPressed("KeyW"))
             this.bird.accelerate(1);           
 
-        }
-
-        if (this.gui.isKeyPressed("KeyS")) {
+        if (this.gui.isKeyPressed("KeyS"))
             this.bird.accelerate(-1);
-            
-        }
-
-        if (this.gui.isKeyPressed("KeyA")){
-            
+        
+        if (this.gui.isKeyPressed("KeyA"))
             this.bird.turn(-1);
-            
-        }
 
-        if (this.gui.isKeyPressed("KeyD")){
+        if (this.gui.isKeyPressed("KeyD"))
             this.bird.turn(1);
             
-        }
-        
         if (this.gui.isKeyPressed("KeyR")){
             this.bird.reset();
             this.startDescending = false;
-
         }
 
-        if (this.gui.isKeyPressed("KeyP")){
-
+        if (this.gui.isKeyPressed("KeyP"))
             this.bird.isDescending = true;  
-        }
-
+        
         if (this.gui.isKeyPressed("KeyL")){
-
             this.lightning.startAnimation(t); 
             this.lightning.displayLightning = true;
-        
         }
-
-       
     }
 
     update(t){
@@ -162,10 +106,8 @@ class MyScene extends CGFscene {
         this.checkKeys(t);
         this.bird.updateWings(t);
 
-        if (this.lightning.displayLightning){
+        if (this.lightning.displayLightning)
             this.lightning.update(t);
-        }
-            
     }
 
     display() {

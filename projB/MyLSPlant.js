@@ -6,7 +6,28 @@
 class MyLSPlant extends CGFobject {
 	constructor(scene) {
         super(scene);
+
+        this.axiom = "X";
+        this.ruleF = "FF";
+        this.ruleX = "F[-X][X]F[-X]+FX";
+        this.angle = 30.0;
+        this.iterations = 4;
+        this.scaleFactor = 0.5;
+
         this.init();
+        
+        this.generate(
+            this.axiom,
+            {
+                "F": [ "FF" ],
+                "X": [ "F[-X][X]F[-X]+X", "F[-X][x]+X", "F[+X]-X", "F[/X][X]F[\\\\X]+X", "F[\\X][X]/X", "F[/X]\\X", "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X"]
+            },
+            this.angle,
+            this.iterations,
+            this.scaleFactor
+        );
+       
+
     }
 
     init(){
