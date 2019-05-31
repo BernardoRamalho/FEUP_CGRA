@@ -1,0 +1,13 @@
+ALterar Altimetry (VER no moodle original)
+Alterar Heightmap no Photoshop
+Alterar Texturas MyBird
+Alterar Posição MyBranch When picked up (Desenhar quando se desanha o bico)
+Alterar a rotação das asas
+Adicionar Slider SpeedFactor;
+Adicionar Slider scaleFactor;
+
+Falar com o prof:
+Relampago
+MyBranch: Passar o vetor ou só um;
+Textura dos Dois Lados;
+Como Melhorar o MyTreePatch
