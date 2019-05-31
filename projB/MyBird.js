@@ -132,11 +132,6 @@ class MyBird extends CGFobject {
         if(this.catchedBranch){
             if((Math.abs(this.position[0]-nest.position[0]) < 3) && (Math.abs(this.position[2]-this.branch.position[2]) < 3) && this.position[1] < 0.7 ){
                 this.branch.position = nest.position;
-                for (var i = 0; i < branches.length; i++) {
-                    if(branches[i] == this.branch){
-                        branches[i].isCatched = false;
-                    }
-                }
                 this.branch.isCatched = false;
                 this.catchedBranch = false;
             }
