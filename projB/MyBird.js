@@ -24,6 +24,7 @@ class MyBird extends CGFobject {
         this.leftWingEnd = new MyTriangle(this.scene,0.8);
         this.leftWingBeggining = new MyTwoSidedQuad(this.scene,0.8*2);
         this.tail = new MyTriangle(this.scene,0.5);
+        this.eye =  new MyQuad(this.scene,0.08);
 
 
         //this.branch = new MyTreeBranch(this,2,0.5);
@@ -70,7 +71,7 @@ class MyBird extends CGFobject {
         this.headMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
         this.headMaterial.setSpecular(0.1, 0.1, 0.1, 1);
         this.headMaterial.setShininess(10.0);
-        this.headMaterial.loadTexture("images/head.jpg"); 
+        this.headMaterial.loadTexture("images/head1.jpg"); 
         this.headMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
         //Texture Beak
@@ -81,6 +82,14 @@ class MyBird extends CGFobject {
         this.beakMaterial.setShininess(10.0);
         this.beakMaterial.loadTexture("images/Beak.jpg"); 
         this.beakMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
+        this.eyeMaterial = new CGFappearance(this.scene);
+        this.eyeMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.eyeMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.eyeMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.eyeMaterial.setShininess(10.0);
+        this.eyeMaterial.loadTexture("images/eye.JPG"); 
+        this.eyeMaterial.setTextureWrap('REPEAT', 'REPEAT');
         
     }
 
@@ -207,6 +216,22 @@ class MyBird extends CGFobject {
         this.scene.rotate(90*Math.PI/180,0,0,1);
         this.headMaterial.apply();
         this.head1.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(0.7,0.1,0.1);
+        this.scene.rotate(-Math.PI/6,1,0,0);
+        //this.scene.rotate(Math.PI/4,0,0,1);
+        this.eyeMaterial.apply();
+        this.eye.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(0.7,0.1,-0.1);
+        this.scene.rotate(-5*Math.PI/6,1,0,0);
+        //this.scene.rotate(Math.PI/4,0,0,1);
+        this.eyeMaterial.apply();
+        this.eye.display();
         this.scene.popMatrix();
 
         if(this.catchedBranch){

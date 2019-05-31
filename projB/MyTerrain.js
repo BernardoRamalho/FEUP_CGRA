@@ -59,7 +59,7 @@ class MyTerrain extends CGFobject {
         this.scene.pushMatrix();
         this.scene.setActiveShader(this.terrainShader);
         this.appearance.setTexture(this.textureTerrain);
-        this.appearance.setTextureWrap('REPEAT', 'REPEAT');
+        this.appearance.setTextureWrap('CLAMP_TO_EDGE', 'CLAMP_TO_EDGE');
         this.appearance.apply();
         this.textureMapTerrain.bind(1);
         this.textureColorTerrain.bind(2);
