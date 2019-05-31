@@ -84,14 +84,14 @@ class MyBird extends CGFobject {
         
     }
 
-    updatePosition(t, branches){
+    updatePosition(t, branches,nest){
 
         if (this.isDescending == true){
             this.position[1] -= 0.15;
 
             if (this.position[1] < 0.5){
                 this.isDescending = false;
-                this.checkProximity(branches);
+                this.checkProximity(branches,nest);
                 this.isAscending = true;
             }
         }
@@ -130,11 +130,15 @@ class MyBird extends CGFobject {
     checkProximity(branches, nest) {
 
         if(this.catchedBranch){
-           // if((Math.abs(this.position[0]-nest.position[0]) < 1.5) && (Math.abs(this.position[2]-this.branch.position[2]) < 1.5) && this.position[1] < 0.7 ){
-                //this.branch.position = this.position;
-                //this.branch.isCatched = false;
-                //this.catchedBranch = false;
-            //}
+            if((Math.abs(this.position[0]-nest.position[0]) < 1.5) && (Math.abs(this.position[2]-nest.position[2]) < 1.5) && this.position[1] < 0.7 ){
+                for (var i = 0; i < branches.length; i++) {
+                    if (branches[i].isCatched) {
+                        branches[i].position = nest.position;
+                        branches[i].isCatched = false;
+                        this.catchedBranch = false;
+                    }
+                }
+            }
         }
         else{
             for (var i = 0; i < branches.length; i++) {
