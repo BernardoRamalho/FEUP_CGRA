@@ -154,7 +154,7 @@ class MyScene extends CGFscene {
 
         this.pushMatrix();
         this.translate(0.0,-0.5,0.0);
-        //this.terrain.display();
+        this.terrain.display();
         this.popMatrix();
         
         
@@ -166,7 +166,7 @@ class MyScene extends CGFscene {
         for (var i = 0; i < 4; i++) {
             
             if (this.branches[i].isCatched == false){
-          //      this.branches[i].display();
+                this.branches[i].display();
             }
 
         }
@@ -175,12 +175,12 @@ class MyScene extends CGFscene {
 
         this.pushMatrix();
         this.translate(...this.nest.position);
-        //this.nest.display();
+        this.nest.display();
         this.popMatrix();
         
         
                
-        //this.cubeMapDay.display();
+        this.cubeMapDay.display();
 
         this.pushMatrix();
         this.scale(5,5,5);

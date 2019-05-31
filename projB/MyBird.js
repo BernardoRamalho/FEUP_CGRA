@@ -67,9 +67,9 @@ class MyBird extends CGFobject {
 
         //Texture Head
         this.headMaterial = new CGFappearance(this.scene);
-        this.headMaterial.setAmbient(0.1, 0.1, 0.1, 1);
-        this.headMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.headMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.headMaterial.setAmbient(1, 1, 1, 1);
+        this.headMaterial.setDiffuse(1, 1, 1, 1);
+        this.headMaterial.setSpecular(1, 1, 1, 1);
         this.headMaterial.setShininess(10.0);
         this.headMaterial.loadTexture("images/head1.jpg"); 
         this.headMaterial.setTextureWrap('REPEAT', 'REPEAT');
