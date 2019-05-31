@@ -117,7 +117,7 @@ class MyBird extends CGFobject {
             
             //this.position[1] = 3 + Math.sin(t/200);
         }
-        if (Math.abs(this.position[0]) > 16|| Math.abs(this.position[2]) > 16 || Math.abs(this.position[2]-housePosition[2] ) < 3) 
+        if (Math.abs(this.position[0]) > 18|| Math.abs(this.position[2]) > 15 || Math.abs(this.position[2]-housePosition[2] ) < 3) 
             this.orientation += Math.PI;
         
         if (this.position[1] < 0) { // Porque nao funciona
