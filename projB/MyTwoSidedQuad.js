@@ -6,17 +6,26 @@
 class MyTwoSidedQuad extends CGFobject {
 	constructor(scene, x) {
 		super(scene);
-		this.initBuffers(x/2);
+		this.initBuffers(x);
 		
 	}
 	
 	initBuffers(x) {
-		this.vertices = [
+		/*this.vertices = [
 			-x, -x, 0,	//0
 			x, -x, 0,	//1
 			-x, x, 0,	//2
 			x, x, 0		//3
+		];*/
+
+		this.vertices = [
+			0, 0, 0,	//0
+			x, 0, 0,	//1
+			0, x, 0,	//2
+			x, x, 0		//3
 		];
+
+
 
 		//Counter-clockwise reference of vertices
 		this.indices = [

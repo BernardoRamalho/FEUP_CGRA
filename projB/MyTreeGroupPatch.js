@@ -8,23 +8,23 @@ class MyTreeGroupPatch extends CGFobject {
         super(scene);
 
         //Trees with randomish dimensions
-        this.tree1 = new MyLSPlant(this.scene);
+        this.tree1 = new MyTree(this.scene);
         
-        this.tree2 = new MyLSPlant(this.scene);
+        this.tree2 = new MyTree(this.scene);
 
-        this.tree3 = new MyLSPlant(this.scene);
+        this.tree3 = new MyTree(this.scene);
 
-        this.tree4 = new MyLSPlant(this.scene);
+        this.tree4 = new MyTree(this.scene);
         
-        this.tree5 = new MyLSPlant(this.scene);
+        this.tree5 = new MyTree(this.scene);
 
-        this.tree6 = new MyLSPlant(this.scene);
+        this.tree6 = new MyTree(this.scene);
 
-        this.tree7 = new MyLSPlant(this.scene);
+        this.tree7 = new MyTree(this.scene);
 
-        this.tree8 = new MyLSPlant(this.scene);
+        this.tree8 = new MyTree(this.scene);
 
-        this.tree9 = new MyLSPlant(this.scene);
+        this.tree9 = new MyTree(this.scene);
 
 
         //Values to desilign the trees

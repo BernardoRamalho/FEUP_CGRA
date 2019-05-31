@@ -186,7 +186,7 @@ class MyLightning extends CGFobject {
                     {
                         this.whiteMaterial.apply();
                         this.scene.pushMatrix();
-                        this.scene.scale(0.2, 2, 0.2);
+                        this.scene.scale(0.1, 2, 0.1);
                         primitive.display();
                         this.scene.popMatrix();
                         this.scene.translate(0, 1, 0);

@@ -37,7 +37,7 @@ class MyScene extends CGFscene {
         this.house = new MyHouse(this,5);
         this.cubeMapDay = new MyCubeMap(this, 90, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
         this.nest = new MyNest(this,15);
-        this.tree = new MyLSPlant(this);
+        this.tree = new MyTree(this);
         this.florest = new MyTreeGroupPatch(this);
         this.lightning = new MyLightning(this);
         
@@ -135,17 +135,17 @@ class MyScene extends CGFscene {
         //Apply default appearance
         this.setDefaultAppearance();
 
-        
+
+        // ---- BEGIN Primitive drawing section
+
+        //Display House
+
         this.pushMatrix();
         this.translate(...this.house.position);
         this.house.display();
         this.popMatrix();
 
-        /*this.pushMatrix();
-        this.translate(-6,0,6);
-        //this.scale(4,2,4);
-        this.tree.display();
-        this.popMatrix();*/
+        //Display Trees
 
         this.pushMatrix();
         this.translate(-2,0,-15)
@@ -153,6 +153,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
 
+        //Display Terrain
 
         this.pushMatrix();
         this.translate(0.0,-0.5,0.0);
@@ -160,20 +161,19 @@ class MyScene extends CGFscene {
         this.popMatrix();
         
         
-        // ---- BEGIN Primitive drawing section
-        
-        
-        
+        //Display Branches
         
         for (var i = 0; i < 4; i++) {
-            
-            if (this.branches[i].isCatched == false){
+            if (this.branches[i].isCatched == false)
                 this.branches[i].display();
-            }
-
         }
 
+        //Display Bird
+
         this.bird.display(); 
+
+
+        //Display Nest
 
         this.pushMatrix();
         this.translate(...this.nest.position);
@@ -181,8 +181,12 @@ class MyScene extends CGFscene {
         this.popMatrix();
         
         
-               
+        //Display CubeMap  
+
         this.cubeMapDay.display();
+
+
+        //Display Lightning
 
         this.pushMatrix();
         this.scale(5,5,5);
