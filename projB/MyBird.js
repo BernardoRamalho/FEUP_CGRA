@@ -148,7 +148,9 @@ class MyBird extends CGFobject {
 
         if(this.catchedBranch){
             if((Math.abs(this.position[0]-nest.position[0]) < 3) && (Math.abs(this.position[2]-this.branch.position[2]) < 3) && this.position[1] < 0.7 ){
-                this.branch.position = nest.position;
+                this.branch.position[0] = nest.position[0] +Math.random() -0.5;
+                this.branch.position[1] = nest.position[1] + 2;
+                this.branch.position[2] = nest.position[2] + Math.random() -0.5;
                 this.branch.isCatched = false;
                 this.catchedBranch = false;
             }

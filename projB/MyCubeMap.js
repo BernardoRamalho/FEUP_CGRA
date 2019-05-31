@@ -31,7 +31,7 @@ class MyCubeMap extends CGFobject {
     initMaterials() {
         //Front
         this.frontMaterial = new CGFappearance(this.scene);
-        this.frontMaterial.setAmbient(0.5, 0.5, 0.5, 1);
+        this.frontMaterial.setAmbient(1, 1, 1, 1);
         this.frontMaterial.setDiffuse(1, 1, 1, 1);
         this.frontMaterial.setSpecular(0, 0, 0, 1);
         this.frontMaterial.setShininess(10.0);
@@ -40,7 +40,7 @@ class MyCubeMap extends CGFobject {
         
         //Back
         this.backMaterial = new CGFappearance(this.scene);
-        this.backMaterial.setAmbient(0.5, 0.5, 0.5, 1);
+        this.backMaterial.setAmbient(1, 1, 1, 1);
         this.backMaterial.setDiffuse(1, 1, 1, 1);
         this.backMaterial.setSpecular(0, 0, 0, 1);
         this.backMaterial.setShininess(10.0);
@@ -49,7 +49,7 @@ class MyCubeMap extends CGFobject {
         
         //Left
         this.leftMaterial = new CGFappearance(this.scene);
-        this.leftMaterial.setAmbient(0.5, 0.5, 0.5, 1);
+        this.leftMaterial.setAmbient(1, 1, 1, 1);
         this.leftMaterial.setDiffuse(0.8, 0.8, 0.8, 0.8);
         this.leftMaterial.setSpecular(0, 0, 0, 1);
         this.leftMaterial.setShininess(10.0);
@@ -58,7 +58,7 @@ class MyCubeMap extends CGFobject {
         
         //Right
         this.rightMaterial = new CGFappearance(this.scene);
-        this.rightMaterial.setAmbient(0.5, 0.5, 0.5, 1);
+        this.rightMaterial.setAmbient(1, 1, 1, 1);
         this.rightMaterial.setDiffuse(1, 1, 1, 1);
         this.rightMaterial.setSpecular(0, 0, 0, 1);
         this.rightMaterial.setShininess(10.0);
@@ -67,7 +67,7 @@ class MyCubeMap extends CGFobject {
         
         //Top
         this.topMaterial = new CGFappearance(this.scene);
-        this.topMaterial.setAmbient(0.5, 0.5, 0.5, 1);
+        this.topMaterial.setAmbient(1, 1, 1, 1);
         this.topMaterial.setDiffuse(1, 1, 1, 1);
         this.topMaterial.setSpecular(0, 0, 0, 1);
         this.topMaterial.setShininess(10.0);
@@ -76,7 +76,7 @@ class MyCubeMap extends CGFobject {
         
         //Back
         this.bottomMaterial = new CGFappearance(this.scene);
-        this.bottomMaterial.setAmbient(0.5, 0.5, 0.5, 1);
+        this.bottomMaterial.setAmbient(1, 1, 1, 1);
         this.bottomMaterial.setDiffuse(1, 1, 1, 1);
         this.bottomMaterial.setSpecular(0, 0, 0, 1);
         this.bottomMaterial.setShininess(10.0);

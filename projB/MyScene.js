@@ -40,6 +40,7 @@ class MyScene extends CGFscene {
         this.tree = new MyLSPlant(this);
         this.florest = new MyTreeGroupPatch(this);
         this.lightning = new MyLightning(this);
+        
        // this.semiSphere = new MySemiSphere(this,10,3,5);
         
         //Branches
@@ -96,6 +97,7 @@ class MyScene extends CGFscene {
             this.bird.isDescending = true;  
         
         if (this.gui.isKeyPressed("KeyL")){
+            this.lightning = new MyLightning(this);
             this.lightning.startAnimation(t); 
             this.lightning.displayLightning = true;
         }
@@ -184,7 +186,8 @@ class MyScene extends CGFscene {
 
         this.pushMatrix();
         this.scale(5,5,5);
-        this.translate(0,5,0);
+        this.translate(...this.lightning.position);
+        this.rotate(Math.PI/3,0,1,0);
         this.rotate(Math.PI,0,0,1);
         this.lightning.display();
         this.popMatrix();

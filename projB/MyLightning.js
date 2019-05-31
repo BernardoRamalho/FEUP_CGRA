@@ -10,10 +10,10 @@ class MyLightning extends CGFobject {
 
         this.depth = 0;
         this.displayLightning = false;
-
+        this.position =[Math.random() * 8 - 5,5,Math.random() * 8 - 5];
         
 
-        this.axiom = "X"; //Define-se duas vezes?
+        this.axiom = "X"; 
         this.ruleF = "FF";
         this.ruleX = "F[-X][X]F[-X]+FX";
         this.angle = 25.0;
@@ -26,7 +26,8 @@ class MyLightning extends CGFobject {
             this.axiom,
             {
                 "F": [ "FF" ],
-                "X": [ "F[-X][X]F[-X]+FX"]//,"F[-X][X]F[-X]+X", "F[-X][x]+X", "F[+X]-X", "F[/X][X]F[\\\\X]+X", "F[X][X]X", "F[/X]\\X", "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X" ]
+                "X": [ "F[-X][X]F[-X]+FX","F[^-X][X]^F[-X]+XFF", "F[-X]^[X][F][X]FF+X", "F^F[+X]F[-X][X]-X", "F[/X][X]F[\\\\X]+X", "F[X]^FF\\[X]F[X]+X", "F[F/X^F]^F\\X", "F[FX]F[-X]F[X]^X" ]
+                
             },
             this.angle,
             this.iterations,
@@ -46,6 +47,7 @@ class MyLightning extends CGFobject {
 
         //Branch Material
         this.whiteMaterial = new CGFappearance(this.scene);
+        this.whiteMaterial.setSpecular(1.0, 1.0, 1.0, 1.0);
         this.whiteMaterial.setAmbient(1.0, 1.0, 1.0, 1.0);
         this.whiteMaterial.setDiffuse(1.0, 1.0, 1.0, 1.0);
         this.whiteMaterial.setShininess(10.0);

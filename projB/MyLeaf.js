@@ -17,9 +17,9 @@ class MyLeaf extends CGFobject {
 
         //Leaf MAterial
         this.leafMaterial = new CGFappearance(this.scene);
-        this.leafMaterial.setAmbient(0.1, 0.1, 0.1, 1);
-        this.leafMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.leafMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.leafMaterial.setAmbient(1, 1, 1, 1);
+        this.leafMaterial.setDiffuse(1, 1, 1, 1);
+        this.leafMaterial.setSpecular(1, 1, 1, 1);
         this.leafMaterial.setShininess(10.0);
         this.leafMaterial.loadTexture("images/copa-arvore.jpg"); 
         this.leafMaterial.setTextureWrap('REPEAT', 'REPEAT');

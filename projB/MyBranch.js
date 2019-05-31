@@ -17,9 +17,9 @@ class MyBranch extends CGFobject {
 
         //Branch Material
         this.branchMaterial = new CGFappearance(this.scene);
-        this.branchMaterial.setAmbient(0.1, 0.1, 0.1, 1);
-        this.branchMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.branchMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.branchMaterial.setAmbient(1, 1, 1, 1);
+        this.branchMaterial.setDiffuse(1, 1, 1, 1);
+        this.branchMaterial.setSpecular(1, 1, 1, 1);
         this.branchMaterial.setShininess(10.0);
         this.branchMaterial.loadTexture("images/trunk.jpg"); 
         this.branchMaterial.setTextureWrap('REPEAT', 'REPEAT');

@@ -11,9 +11,9 @@ class MyTerrain extends CGFobject {
         this.plane = new Plane(this.scene,32);
         
         this.appearance = new CGFappearance(this.scene);
-		this.appearance.setAmbient(0.3, 0.3, 0.3, 1);
-		this.appearance.setDiffuse(0.7, 0.7, 0.7, 1);
-        this.appearance.setSpecular(0.0, 0.0, 0.0, 1);
+		this.appearance.setAmbient(1, 1, 1, 1);
+		this.appearance.setDiffuse(1, 1, 1, 1);
+        this.appearance.setSpecular(1, 1, 1, 1);
         this.appearance.setShininess(120);
 
        
