@@ -108,6 +108,9 @@ class MyBird extends CGFobject {
             
             this.position[1] = 3 + Math.sin(t/200);
         }
+        if (Math.abs(this.position[0]) > 16|| Math.abs(this.position[2]) > 16 ) 
+            this.orientation += Math.PI;
+            
         this.position[0] += Math.cos(this.orientation )*this.velocity;
         this.position[2] += Math.sin(this.orientation )*this.velocity;
         
@@ -130,14 +133,10 @@ class MyBird extends CGFobject {
     checkProximity(branches, nest) {
 
         if(this.catchedBranch){
-            if((Math.abs(this.position[0]-nest.position[0]) < 1.5) && (Math.abs(this.position[2]-nest.position[2]) < 1.5) && this.position[1] < 0.7 ){
-                for (var i = 0; i < branches.length; i++) {
-                    if (branches[i].isCatched) {
-                        branches[i].position = nest.position;
-                        branches[i].isCatched = false;
-                        this.catchedBranch = false;
-                    }
-                }
+            if((Math.abs(this.position[0]-nest.position[0]) < 3) && (Math.abs(this.position[2]-this.branch.position[2]) < 3) && this.position[1] < 0.7 ){
+                this.branch.position = nest.position;
+                this.branch.isCatched = false;
+                this.catchedBranch = false;
             }
         }
         else{
@@ -145,6 +144,7 @@ class MyBird extends CGFobject {
          
                 if((Math.abs(this.position[0]-branches[i].position[0]) < 1.5) && (Math.abs(this.position[2]-branches[i].position[2]) < 1.5) && this.position[1] < 0.7 ){
                     this.branch = branches[i];
+                    this.branch.orientation = this.orientation;
                     branches[i].isCatched = true;
                     this.catchedBranch = true;
                 }
