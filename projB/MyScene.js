@@ -158,7 +158,7 @@ class MyScene extends CGFscene {
 
     update(t){
         
-        this.bird.updatePosition(t, this.branches);
+        this.bird.updatePosition(t, this.branches, this.nest);
         this.checkKeys(t);
         this.bird.updateWings(t);
 
