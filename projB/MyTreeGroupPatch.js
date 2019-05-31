@@ -4,7 +4,7 @@
  * @param scene - Reference to MyScene object
  */
 class MyTreeGroupPatch extends CGFobject {
-	constructor(scene, trunkHeight, trunkRadius, treeTopHeight, treeTopRadius/*, trunkTexture, treeTopTexture*/) {
+	constructor(scene) {
         super(scene);
 
         //Trees with randomish dimensions
@@ -62,6 +62,8 @@ class MyTreeGroupPatch extends CGFobject {
             this.scene.pushMatrix();
 
             this.scene.translate(row*3.5 - 3.5 + desilignement_values[i], 0, line*3.5 - 3.5 + desilignement_values[8-i]);
+
+            this.scene.scale(4,2,4);
             
             trees[i].display();
 

@@ -8,7 +8,7 @@ class MyLeaf extends CGFobject {
 		super(scene);
 
         //Initializing MyLeaf
-        this.leaf = new MyTriangle(this.scene,1);
+        this.leaf = new MyTriangle(this.scene,1.5);
 
 		this.initMaterials();
     }

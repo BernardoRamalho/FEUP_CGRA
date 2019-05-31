@@ -6,6 +6,7 @@
 class MyHouse extends CGFobject {
 	constructor(scene) {
         super(scene);
+        this.position = [6.0, 2, -15];
 
 		//Initialize scene objects
                

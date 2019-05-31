@@ -38,6 +38,7 @@ class MyScene extends CGFscene {
         this.cubeMapDay = new MyCubeMap(this, 90, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
         this.nest = new MyNest(this,15);
         this.tree = new MyLSPlant(this);
+        this.florest = new MyTreeGroupPatch(this);
         this.lightning = new MyLightning(this);
        // this.semiSphere = new MySemiSphere(this,10,3,5);
         
@@ -102,7 +103,7 @@ class MyScene extends CGFscene {
 
     update(t){
         
-        this.bird.updatePosition(t, this.branches, this.nest);
+        this.bird.updatePosition(t, this.branches, this.nest,this.house.position);
         this.checkKeys(t);
         this.bird.updateWings(t);
 
@@ -134,14 +135,19 @@ class MyScene extends CGFscene {
 
         
         this.pushMatrix();
-        this.translate(5.0,2,-15);
+        this.translate(...this.house.position);
         this.house.display();
         this.popMatrix();
 
         this.pushMatrix();
         this.translate(-6,0,6);
-        this.scale(4,2,4);
+        //this.scale(4,2,4);
         this.tree.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(-2,0,-15)
+        this.florest.display();
         this.popMatrix();
 
 
@@ -164,13 +170,14 @@ class MyScene extends CGFscene {
             }
 
         }
+
         this.bird.display(); 
 
-        //this.semiSphere.display();
         this.pushMatrix();
         this.translate(...this.nest.position);
         this.nest.display();
         this.popMatrix();
+        
         
                
         this.cubeMapDay.display();
