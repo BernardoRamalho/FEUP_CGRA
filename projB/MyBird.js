@@ -92,7 +92,7 @@ class MyBird extends CGFobject {
         
     }
 
-    updatePosition(t, branches,nest,housePosition){
+    updatePosition(t, branches,nest,housePosition,camera){
 
         if (this.isDescending == true){
             this.position[1] -= 0.15*this.speedFactor;
@@ -181,6 +181,8 @@ class MyBird extends CGFobject {
         this.ang = Math.sin(t/200)*(this.velocity + 1)*this.speedFactor/1.5;
         
     }
+
+   
 
     reset(){
         //Reseting MyBird Position and Velocity
