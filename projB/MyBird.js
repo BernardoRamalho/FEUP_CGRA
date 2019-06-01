@@ -276,7 +276,7 @@ class MyBird extends CGFobject {
     
     this.scene.pushMatrix();
     this.scene.translate(0.8,0, 0);
-    this.scene.rotate(40*Math.PI/180,1,0,0);
+    this.scene.rotate(36*Math.PI/180,1,0,0);
     this.scene.rotate(-Math.PI/2,0,0,1);
     this.beakMaterial.apply();
     this.beak.display();
