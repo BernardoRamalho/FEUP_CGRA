@@ -115,7 +115,7 @@ class MyBird extends CGFobject {
         }
         else{
             
-           // this.position[1] = 3 + Math.sin(t/200);
+            this.position[1] = 3 + Math.sin(t/200);
         }
 
         if (Math.abs(this.position[0]) > 18|| Math.abs(this.position[2]) > 15 || Math.abs(this.position[2]-housePosition[2] ) < 3) 
@@ -172,7 +172,7 @@ class MyBird extends CGFobject {
     }
 
     updateWings(t){
-        this.ang = Math.sin(t/200);
+        this.ang = Math.sin(t/200)/1.5;
     }
 
     reset(){
@@ -322,48 +322,54 @@ class MyBird extends CGFobject {
     
     
     //Drawing the Left Wing
-
-        //Left wing End
-
+    
         this.scene.pushMatrix();
-        this.scene.rotate(this.ang, 1.0, 0.0, 0.0);
+        
+        this.scene.rotate(this.ang, 1, 0, 0);
+        
+        //Left wing Beggining
+        this.scene.pushMatrix();
+        this.scene.translate(-0.8, 0, 1);
+        this.scene.rotate(this.ang/3,1, 0 ,0);
+        this.scene.rotate(-Math.PI/2, 1, 0 ,0);
+        this.wingMaterial.apply();
+        this.leftWingBeggining.display();
+        this.scene.popMatrix();
+        
+        //Left wing End
         this.scene.translate(-0.4, 0, 1.4);
         this.scene.rotate(-Math.PI/2, 0 , 1, 0);
         this.scene.rotate(-Math.PI/2, 1, 0, 0);
         this.wingMaterial.apply();
         this.leftWingEnd.display();
-        this.scene.popMatrix();
 
-        //Left wing Beggining
-        
-        this.scene.pushMatrix();
-        this.scene.rotate(this.ang, 1, 0, 0);
-        this.scene.translate(-0.8, 0, 1);
-        this.scene.rotate(-Math.PI/2, 1, 0, 0);
-        this.wingMaterial.apply();
-        this.leftWingBeggining.display();
         this.scene.popMatrix();
         
     //Drawing the Right Wing
 
-        //Right wing end
-
+    
+    this.scene.pushMatrix();
+        
+        this.scene.rotate(-this.ang, 1, 0, 0);
+        
+        //Left wing Beggining
         this.scene.pushMatrix();
-        this.scene.rotate(-this.ang, 1.0, 0.0, 0.0);
+        this.scene.translate(-0.8, 0, -1);
+        this.scene.rotate(-this.ang/3, 1, 0 ,0);
+        this.scene.translate(0, 0, 0.8);
+        this.scene.rotate(-Math.PI/2, 1, 0 ,0);
+        this.wingMaterial.apply();
+        this.rightWingBeggining.display();
+        this.scene.popMatrix();
+        
+        //Left wing End
+        this.scene.pushMatrix()
         this.scene.translate(-0.4, 0, -1.4);
         this.scene.rotate(-Math.PI/2, 1, 0, 0);
         this.wingMaterial.apply();
         this.rightWingEnd.display();
         this.scene.popMatrix();
 
-        //Right wing beggining
-
-        this.scene.pushMatrix();
-        this.scene.rotate(-this.ang, 1, 0, 0);
-        this.scene.translate(-0.8, 0, -0.2);
-        this.scene.rotate(-Math.PI/2, 1, 0, 0);
-        this.wingMaterial.apply();
-        this.rightWingBeggining.display();
         this.scene.popMatrix();
         
         
