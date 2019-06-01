@@ -36,7 +36,7 @@ class MyScene extends CGFscene {
         this.terrain = new MyTerrain(this);
         this.water = new MyRiver(this);
         this.house = new MyHouse(this,5);
-        this.cubeMapDay = new MyCubeMap(this, 90, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
+        this.cubeMapDay = new MyCubeMap(this, 60, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
         this.nest = new MyNest(this,15);
         this.tree = new MyTree(this);
         this.florest = new MyTreeGroupPatch(this);
@@ -80,7 +80,7 @@ class MyScene extends CGFscene {
         if (this.gui.isKeyPressed("KeyW"))
             this.bird.accelerate(1);           
 
-        if (this.gui.isKeyPressed("KeyS"))
+        else if (this.gui.isKeyPressed("KeyS"))
             this.bird.accelerate(-1);
         
         if (this.gui.isKeyPressed("KeyA"))
@@ -112,7 +112,7 @@ class MyScene extends CGFscene {
         
         this.bird.updatePosition(t, this.branches, this.nest,this.house.position);
         this.checkKeys(t);
-        this.water.updateWater(t);
+        this.water.updateWater(t/3);
         this.bird.updateWings(t);
 
         if (this.lightning.displayLightning)
@@ -170,7 +170,7 @@ class MyScene extends CGFscene {
         
         
         this.pushMatrix();
-        this.translate(-5.0,0.2,7.0);
+        this.translate(-5.0,0.1,7.0);
         this.rotate(Math.PI/2,0,1,0);
         this.water.display();
         this.popMatrix();

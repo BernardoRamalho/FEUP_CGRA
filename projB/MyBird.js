@@ -156,7 +156,7 @@ class MyBird extends CGFobject {
          
                 if((Math.abs(this.position[0]-branches[i].position[0]) < 1.5) && (Math.abs(this.position[2]-branches[i].position[2]) < 1.5) && this.position[1] < 0.7 ){
                     this.branch = branches[i];
-                    this.branch.orientation = this.orientation;
+                    //this.branch.orientation = this.orientation;
                     branches[i].isCatched = true;
                     this.catchedBranch = true;
                 }
@@ -247,81 +247,82 @@ class MyBird extends CGFobject {
         this.scene.popMatrix();
 
     //Drawing Beak
-        
-        //Drawing Top Beak
-        
-        this.scene.pushMatrix();
-        this.scene.translate(0.8,0.05,0);
-        this.scene.rotate(-90*Math.PI/180,0,0,1);
-        //this.scene.rotate(180*Math.PI/180,0,0,1);
-        this.beakMaterial.apply();
-        this.topBeak.display();
-        this.scene.popMatrix();
-        
-        //Drawing Bottom Beak
-        
-        this.scene.pushMatrix();
-        this.scene.translate(0.8,-0.05,0);
-        this.scene.rotate(-90*Math.PI/180,0,0,1);
-        //this.scene.rotate(180*Math.PI/180,0,0,1);
-        this.beakMaterial.apply();
-        this.bottomBeak.display();
-        this.scene.popMatrix();
-        
-        
+    
+    //Drawing Top Beak
+    
+    this.scene.pushMatrix();
+    this.scene.translate(0.8,0.05,0);
+    this.scene.rotate(-90*Math.PI/180,0,0,1);
+    //this.scene.rotate(180*Math.PI/180,0,0,1);
+    this.beakMaterial.apply();
+    this.topBeak.display();
+    this.scene.popMatrix();
+    
+    //Drawing Bottom Beak
+    
+    this.scene.pushMatrix();
+    this.scene.translate(0.8,-0.05,0);
+    this.scene.rotate(-90*Math.PI/180,0,0,1);
+    //this.scene.rotate(180*Math.PI/180,0,0,1);
+    this.beakMaterial.apply();
+    this.bottomBeak.display();
+    this.scene.popMatrix();
+    
+    
     //Drawing Body
-        
-        this.scene.pushMatrix();
-        this.scene.rotate(90*Math.PI/180,0,0,1);
-        this.bodyMaterial.apply();
-        this.body.display();
-        this.scene.popMatrix();
-        
+    
+    this.scene.pushMatrix();
+    this.scene.rotate(90*Math.PI/180,0,0,1);
+    this.bodyMaterial.apply();
+    this.body.display();
+    this.scene.popMatrix();
+    
     //Drawing Bottom
-        
-        this.scene.pushMatrix();
-        this.scene.translate(-1,0,0);
-        this.scene.rotate(90*Math.PI/180,0,0,1);
-        this.bodyMaterial.apply();
-        this.bottom.display();
-        this.scene.popMatrix();
-        
+    
+    this.scene.pushMatrix();
+    this.scene.translate(-1,0,0);
+    this.scene.rotate(90*Math.PI/180,0,0,1);
+    this.bodyMaterial.apply();
+    this.bottom.display();
+    this.scene.popMatrix();
+    
     //Drawing Left Leg
-        
-        this.scene.pushMatrix();
-        this.scene.translate(-1,-0.2,0.2);
-        this.scene.rotate(90*Math.PI/180,0,0,1);
-        this.leftLeg.display();
-        this.scene.popMatrix();
-        
+    
+    this.scene.pushMatrix();
+    this.scene.translate(-1,-0.2,0.2);
+    this.scene.rotate(90*Math.PI/180,0,0,1);
+    this.leftLeg.display();
+    this.scene.popMatrix();
+    
     //Drawing Right Leg
-        
-        this.scene.pushMatrix();
-        this.scene.translate(-1,-0.2,-0.2);
-        this.scene.rotate(90*Math.PI/180,0,0,1);
-        this.leftLeg.display();
-        this.scene.popMatrix();
-        
+    
+    this.scene.pushMatrix();
+    this.scene.translate(-1,-0.2,-0.2);
+    this.scene.rotate(90*Math.PI/180,0,0,1);
+    this.leftLeg.display();
+    this.scene.popMatrix();
+    
     //Drawing Left Foot
-        
-        this.scene.pushMatrix();
-        this.scene.translate(-1.4,-0.2,0.2);
-        this.scene.rotate(90*Math.PI/180,0,0,1);
-        this.beakMaterial.apply();
-        this.foot.display();
-        this.scene.popMatrix();
-        
+    
+    this.scene.pushMatrix();
+    this.scene.translate(-1.4,-0.2,0.2);
+    this.scene.rotate(90*Math.PI/180,0,0,1);
+    this.beakMaterial.apply();
+    this.foot.display();
+    this.scene.popMatrix();
+    
     //Drawing Left Foot
-        
-        this.scene.pushMatrix();
-        this.scene.translate(-1.4,-0.2,-0.2);
-        this.scene.rotate(90*Math.PI/180,0,0,1);
-        this.beakMaterial.apply();
-        this.foot.display();
-        this.scene.popMatrix();
-        
-        
+    
+    this.scene.pushMatrix();
+    this.scene.translate(-1.4,-0.2,-0.2);
+    this.scene.rotate(90*Math.PI/180,0,0,1);
+    this.beakMaterial.apply();
+    this.foot.display();
+    this.scene.popMatrix();
+    
+    
     //Drawing the Left Wing
+<<<<<<< HEAD
 
         //Left wing End
 
@@ -367,27 +368,85 @@ class MyBird extends CGFobject {
         this.scene.popMatrix();
         
         
+=======
+    
+    //Left wing beggining
+    
+    this.scene.pushMatrix();
+    this.scene.translate(0, 0, 0.5);
+    this.scene.scale(0.5, 0.5, 0.5);
+    this.scene.rotate(this.ang, 1.0, 0.0, 0.0);
+    this.scene.translate(-1.6, 0, 1.2);
+    this.scene.rotate(this.ang, 1.0, 0.0, 0.0);
+    this.scene.translate(0.8,0,0.8);
+    this.scene.rotate(Math.PI/2, 1, 0, 0);
+    this.scene.rotate(Math.PI, 1, 1, 0);
+    this.wingMaterial.apply();
+    this.leftWingEnd.display();
+    this.scene.popMatrix();
+    
+    //Left wing end
+    
+    this.scene.pushMatrix();
+    this.scene.translate(0, 0, 0.7);
+    this.scene.translate(-0.8, 0, -0.4);
+    this.scene.rotate(this.ang, 1.0, 0.0, 0.0);
+    this.scene.translate(0,0.0,0.8);
+    this.scene.rotate(-Math.PI/2, 1, 0, 0);
+    this.wingMaterial.apply();
+    this.leftWingBeggining.display();
+    this.scene.popMatrix();
+    
+    //Drawing the Right Wing
+    
+    //Right wing end
+    
+    this.scene.pushMatrix();
+    this.scene.scale(0.5, 0.5, 0.5);
+    this.scene.rotate(-this.ang, 1.0, 0.0, 0.0);
+    this.scene.translate(0,0,-2.1);
+    this.scene.rotate(-this.ang, 1.0, 0.0, 0.0);
+    this.scene.translate(-0.8,0,-0.8);
+    this.scene.rotate(-Math.PI/2, 1, 0, 0);
+    this.wingMaterial.apply();
+    this.rightWingEnd.display();
+    this.scene.popMatrix();
+    
+    //Right wing beggining
+    
+    this.scene.pushMatrix();
+    this.scene.translate(-0.8, 0, -0.3);
+    this.scene.rotate(-this.ang, 1.0, 0.0, 0.0);
+    this.scene.rotate(-Math.PI/2, 1, 0, 0);
+    this.wingMaterial.apply();
+    this.rightWingBeggining.display();
+    this.scene.popMatrix();
+    
+    
+>>>>>>> 12bae3a8b5c147bd46709b80a075446b3d5d9d07
     //Tail Drawing
-        
-        this.scene.pushMatrix();
-        this.scene.translate(-1.7,0,0);
-        this.scene.rotate(3*Math.PI/4, 0, 1, 0);
-        this.scene.rotate(-Math.PI/2, 1, 0, 0);
-        this.headMaterial.apply();
-        this.tail.display();
-        this.scene.popMatrix();
-        
-        this.scene.popMatrix();
-        
+    
+    this.scene.pushMatrix();
+    this.scene.translate(-1.7,0,0);
+    this.scene.rotate(3*Math.PI/4, 0, 1, 0);
+    this.scene.rotate(-Math.PI/2, 1, 0, 0);
+    this.headMaterial.apply();
+    this.tail.display();
+    this.scene.popMatrix();
+    
+    
     //Drawing Catched Branch
     
         if(this.catchedBranch){
             this.branch.position = [0, 0, 0];
+            this.branch.orientation = 0;
             this.scene.pushMatrix();
-            this.scene.translate(0.8, 0, 0);
-            this.scene.rotate(Math.PI,0 , 1, 0);
+            this.scene.translate(-1.5, -0.2,-1);
+            //this.scene.rotate(Math.PI,0 , 1, 0);
             this.branch.display(); 
             this.scene.popMatrix();
         }
+    this.scene.popMatrix();
     }
+    
 }
