@@ -148,14 +148,14 @@ class MyScene extends CGFscene {
 
         this.pushMatrix();
         this.translate(...this.house.position);
-       // this.house.display();
+        this.house.display();
         this.popMatrix();
 
         //Display Trees
 
         this.pushMatrix();
         this.translate(-2,0,-15)
-        //this.florest.display();
+        this.florest.display();
         this.popMatrix();
 
 
@@ -165,14 +165,14 @@ class MyScene extends CGFscene {
         
         this.pushMatrix();
         this.translate(0.0,-0.5,0.0);
-       // this.terrain.display();
+        this.terrain.display();
         this.popMatrix();
         
         
         this.pushMatrix();
         this.translate(-5.0,0.1,7.0);
         this.rotate(Math.PI/2,0,1,0);
-        //this.water.display();
+        this.water.display();
         this.popMatrix();
         
         
@@ -198,7 +198,7 @@ class MyScene extends CGFscene {
         
         //Display CubeMap  
 
-        //this.cubeMapDay.display();
+        this.cubeMapDay.display();
 
 
         //Display Lightning
