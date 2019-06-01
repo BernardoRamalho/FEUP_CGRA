@@ -93,7 +93,7 @@ class MyBird extends CGFobject {
         
     }
 
-    updatePosition(t, branches,nest,housePosition){
+    updatePosition(t, branches,nest,housePosition,camera){
 
         if (this.isDescending == true){
             this.position[1] -= 0.15;
@@ -174,6 +174,8 @@ class MyBird extends CGFobject {
     updateWings(t){
         this.ang = Math.sin(t/200);
     }
+
+   
 
     reset(){
         this.position = [0, 3, 0];
@@ -326,6 +328,9 @@ class MyBird extends CGFobject {
         //Left wing End
 
         this.scene.pushMatrix();
+        //this.scene.translate(-0, 0, 1);
+        //this.scene.rotate(this.ang,1,0,0);
+        //this.scene.translate(-0, 0, -1);
         this.scene.rotate(this.ang, 1.0, 0.0, 0.0);
         this.scene.translate(-0.4, 0, 1.4);
         this.scene.rotate(-Math.PI/2, 0 , 1, 0);
