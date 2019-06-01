@@ -34,6 +34,7 @@ class MyScene extends CGFscene {
         this.branch3 = new MyTreeBranch(this,2,0.5);  
         this.branch4 = new MyTreeBranch(this,2,0.5);
         this.terrain = new MyTerrain(this);
+        this.water = new MyRiver(this);
         this.house = new MyHouse(this,5);
         this.cubeMapDay = new MyCubeMap(this, 90, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
         this.nest = new MyNest(this,15);
@@ -107,6 +108,7 @@ class MyScene extends CGFscene {
         
         this.bird.updatePosition(t, this.branches, this.nest,this.house.position);
         this.checkKeys(t);
+        this.water.updateWater(t);
         this.bird.updateWings(t);
 
         if (this.lightning.displayLightning)
@@ -153,11 +155,20 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
 
-        //Display Terrain
+        //Display Water
 
+        //Display Terrain
+        
         this.pushMatrix();
         this.translate(0.0,-0.5,0.0);
         this.terrain.display();
+        this.popMatrix();
+        
+        
+        this.pushMatrix();
+        this.translate(-5.0,0.2,7.0);
+        this.rotate(Math.PI/2,0,1,0);
+        this.water.display();
         this.popMatrix();
         
         
