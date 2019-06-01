@@ -15,11 +15,19 @@ class MyQuad extends CGFobject {
 			-x, -x, 0,	//0
 			x, -x, 0,	//1
 			-x, x, 0,	//2
+			x, x, 0,	//3
+
+			-x, -x, 0,	//0
+			x, -x, 0,	//1
+			-x, x, 0,	//2
 			x, x, 0		//3
 		];
 
 		//Counter-clockwise reference of vertices
 		this.indices = [
+			0, 1, 2,
+			1, 3, 2,
+
 			0, 1, 2,
 			1, 3, 2
 		];
@@ -29,7 +37,12 @@ class MyQuad extends CGFobject {
 			0, 0, 1,
 			0, 0, 1,
 			0, 0, 1,
-			0, 0, 1
+			0, 0, 1,
+
+			0, 0, -1,
+			0, 0, -1,
+			0, 0, -1,
+			0, 0, -1
 		];
 	
 		/*

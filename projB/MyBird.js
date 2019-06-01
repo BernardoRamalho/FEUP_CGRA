@@ -9,8 +9,8 @@ class MyBird extends CGFobject {
         super(scene);
 
         //MyBird Objects
-        this.topBeak = new MyPrism(this.scene, 3, 3, 0.2, 0.05);
-        this.bottomBeak = new MyPrism(this.scene, 3, 3, 0.1, 0.05);
+        //this.topBeak = new MyPrism(this.scene, 3, 3, 0.2, 0.05);
+        //this.bottomBeak = new MyPrism(this.scene, 3, 3, 0.1, 0.05);
         this.head = new MyUnevenCylinder(this.scene,5,4,0.1,0.2,0.25);
         this.head1 = new MyUnevenCylinder(this.scene,5,4,0.3,0.25,0.1);
         this.body = new MyCylinder(this.scene,5,4,1.0,0.4);
@@ -25,6 +25,7 @@ class MyBird extends CGFobject {
         this.leftWingBeggining = new MyTwoSidedQuad(this.scene,0.8);
         this.tail = new MyTriangle(this.scene,0.5);
         this.eye =  new MyQuad(this.scene,0.08);
+        this.beak = new MyPyramid(this.scene, 5, 4, 0.3, 0.1);
 
 
         //this.branch = new MyTreeBranch(this,2,0.5);
@@ -37,8 +38,9 @@ class MyBird extends CGFobject {
         //MyBird Movement Variables
         this.orientation = 0;
         this.scaleFactor = 1;
+        this.speedFactor = 1;
 
-        this.velocity = 0;
+        this.velocity = 0 ;
         this.position = [0, 3, 0];
 
         this.initMaterials();
@@ -49,7 +51,7 @@ class MyBird extends CGFobject {
 
         //Texture Wings
         this.wingMaterial = new CGFappearance(this.scene);
-        this.wingMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.wingMaterial.setAmbient(1, 1, 1, 1);
         this.wingMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
         this.wingMaterial.setSpecular(0.1, 0.1, 0.1, 1);
         this.wingMaterial.setShininess(10.0);
@@ -96,7 +98,7 @@ class MyBird extends CGFobject {
     updatePosition(t, branches,nest,housePosition){
 
         if (this.isDescending == true){
-            this.position[1] -= 0.15;
+            this.position[1] -= 0.15*this.speedFactor;
 
             if (this.position[1] < 0.5){
                 this.isDescending = false;
@@ -105,7 +107,7 @@ class MyBird extends CGFobject {
             }
         }
         else if (this.isAscending == true){
-           this.position[1] += 0.15
+           this.position[1] += 0.15*this.speedFactor;
 
            if(this.position[1] > 2.99){
              
@@ -115,7 +117,7 @@ class MyBird extends CGFobject {
         }
         else{
             
-            this.position[1] = 3 + Math.sin(t/200);
+            this.position[1] = 3 + Math.sin(t*this.speedFactor/200);
         }
 
         if (Math.abs(this.position[0]) > 18|| Math.abs(this.position[2]) > 15 || Math.abs(this.position[2]-housePosition[2] ) < 3) 
@@ -129,13 +131,13 @@ class MyBird extends CGFobject {
     accelerate(v){
 
         if(this.velocity+0.01*v > 0.1 && this.velocity+0.01*v < 3.0){
-            this.velocity += 0.01*v;
+            this.velocity += 0.01*v * this.speedFactor;
         }
         else if (this.velocity+0.01*v < 0.1){
-            this.velocity = 0.1;
+            this.velocity = 0.1 * this.speedFactor;;
         }
         else {
-            this.velocity = 3;
+            this.velocity = 3*this.speedFactor;
         }
         
     }
@@ -143,7 +145,7 @@ class MyBird extends CGFobject {
     checkProximity(branches, nest) {
 
         if(this.catchedBranch){
-            if((Math.abs(this.position[0]-nest.position[0]) < 3) && (Math.abs(this.position[2]-this.branch.position[2]) < 3) && this.position[1] < 0.7 ){
+            if((Math.abs(this.position[0]-nest.position[0]) < 4) && (Math.abs(this.position[2]-this.branch.position[2]) < 4) && this.position[1] < 0.7 ){
                 this.branch.position[0] = nest.position[0] +Math.random() -0.5;
                 this.branch.position[1] = nest.position[1] + 2;
                 this.branch.position[2] = nest.position[2] + Math.random() -0.5;
@@ -156,9 +158,9 @@ class MyBird extends CGFobject {
          
                 if((Math.abs(this.position[0]-branches[i].position[0]) < 1.5) && (Math.abs(this.position[2]-branches[i].position[2]) < 1.5) && this.position[1] < 0.7 ){
                     this.branch = branches[i];
-                    //this.branch.orientation = this.orientation;
                     branches[i].isCatched = true;
                     this.catchedBranch = true;
+                    break;
                 }
             }
         }
@@ -168,16 +170,40 @@ class MyBird extends CGFobject {
     
 
     turn(v){
-        this.orientation += 10*v * Math.PI/180;
+        this.orientation += 10*v * Math.PI/180*this.speedFactor;
     }
 
     updateWings(t){
-        this.ang = Math.sin(t/200)/1.5;
+        this.ang = Math.sin(t/200)*(this.velocity + 1)*this.speedFactor/1.5;
+        
     }
 
     reset(){
         this.position = [0, 3, 0];
         this.velocity = 0;
+
+        //Reseting MyBird State Variables
+        this.isAscending = false;
+        this.isDescending = false;
+
+        //Reseting MyBird Movement Variables
+        this.orientation = 0;
+        this.scaleFactor = 1;
+        this.speedFactor = 1;
+
+        if(this.catchedBranch){
+            //Reseting Branch
+            this.branch.isCatched = false;
+            this.catchedBranch = false;
+    
+            var plusOrMinus1 =  Math.random() < 0.5 ? -1 : 1;
+            var plusOrMinus2 =  Math.random() < 0.5 ? -1 : 1;
+            
+            this.branch.position = [7.5*(Math.random() * plusOrMinus1), 0.5, 7.5*( Math.random() * plusOrMinus2)];
+            this.branch.orientation = Math.random() * Math.PI;
+            
+        }
+        
     }
 
     display(){
@@ -187,7 +213,7 @@ class MyBird extends CGFobject {
         //Changing Bird Position and Orientation
         
         this.scene.translate(...this.position);
-        //this.scene.scale(10,10,10);
+        this.scene.scale(10,10,10);
 
         this.scene.rotate(-this.orientation, 0.0, 1.0, 0.0);
 
@@ -248,24 +274,12 @@ class MyBird extends CGFobject {
 
     //Drawing Beak
     
-    //Drawing Top Beak
-    
     this.scene.pushMatrix();
-    this.scene.translate(0.8,0.05,0);
-    this.scene.rotate(-90*Math.PI/180,0,0,1);
-    //this.scene.rotate(180*Math.PI/180,0,0,1);
+    this.scene.translate(0.8,0, 0);
+    this.scene.rotate(40*Math.PI/180,1,0,0);
+    this.scene.rotate(-Math.PI/2,0,0,1);
     this.beakMaterial.apply();
-    this.topBeak.display();
-    this.scene.popMatrix();
-    
-    //Drawing Bottom Beak
-    
-    this.scene.pushMatrix();
-    this.scene.translate(0.8,-0.05,0);
-    this.scene.rotate(-90*Math.PI/180,0,0,1);
-    //this.scene.rotate(180*Math.PI/180,0,0,1);
-    this.beakMaterial.apply();
-    this.bottomBeak.display();
+    this.beak.display();
     this.scene.popMatrix();
     
     

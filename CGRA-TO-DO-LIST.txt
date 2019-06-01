@@ -1,9 +1,5 @@
 Alterar Heightmap no Photoshop
 Alterar Texturas MyBird Para repetirem
-Alterar a rotação das asas
-Adicionar Slider SpeedFactor; Fazer com que ele nao comece em 3
 Textura dos Dois Lados;
-Quando se der Reset largar o ramo?
-Nao deixar que ela pegue em dois ramos
 
 Como Melhorar o MyTreePatch
