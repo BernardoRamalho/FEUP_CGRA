@@ -95,7 +95,11 @@ class MyScene extends CGFscene {
         }
 
         if (this.gui.isKeyPressed("KeyP"))
-            this.bird.isDescending = true;  
+
+            if(this.bird.position[1] > 0.5){
+                this.bird.isDescending = true;  
+
+            }
         
         if (this.gui.isKeyPressed("KeyL")){
             this.lightning = new MyLightning(this);
@@ -176,7 +180,8 @@ class MyScene extends CGFscene {
         
         for (var i = 0; i < 4; i++) {
             if (this.branches[i].isCatched == false)
-                this.branches[i].display();
+                this.branches[i].display()
+                ;
         }
 
         //Display Bird

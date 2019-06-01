@@ -20,8 +20,8 @@ class MyBird extends CGFobject {
         this.righttLeg = new MyCylinder(this.scene,5,5,0.4,0.1);
         this.foot = new MyCylinder(this.scene,5,5,0.2,0.05);
         this.rightWingBeggining = new MyTwoSidedQuad(this.scene,0.8);
-        this.rightWingEnd = new MyTriangle(this.scene,0.8);
-        this.leftWingEnd = new MyTriangle(this.scene,0.8);
+        this.rightWingEnd = new MyTriangle(this.scene,0.4);
+        this.leftWingEnd = new MyTriangle(this.scene,0.4);
         this.leftWingBeggining = new MyTwoSidedQuad(this.scene,0.8);
         this.tail = new MyTriangle(this.scene,0.5);
         this.eye =  new MyQuad(this.scene,0.08);
@@ -115,15 +115,11 @@ class MyBird extends CGFobject {
         }
         else{
             
-            //this.position[1] = 3 + Math.sin(t/200);
+           // this.position[1] = 3 + Math.sin(t/200);
         }
+
         if (Math.abs(this.position[0]) > 18|| Math.abs(this.position[2]) > 15 || Math.abs(this.position[2]-housePosition[2] ) < 3) 
             this.orientation += Math.PI;
-        
-        if (this.position[1] < 0) { // Porque nao funciona
-            this.isDescending = false;
-            this.isAscending = true;
-        }
             
         this.position[0] += Math.cos(this.orientation )*this.velocity;
         this.position[2] += Math.sin(this.orientation )*this.velocity;
@@ -327,28 +323,22 @@ class MyBird extends CGFobject {
         
     //Drawing the Left Wing
 
-        //Left wing beggining
+        //Left wing End
 
         this.scene.pushMatrix();
-        this.scene.translate(0, 0, 0.5);
-        this.scene.scale(0.5, 0.5, 0.5);
         this.scene.rotate(this.ang, 1.0, 0.0, 0.0);
-        this.scene.translate(-1.6, 0, 1.2);
-        this.scene.rotate(this.ang, 1.0, 0.0, 0.0);
-        this.scene.translate(0.8,0,0.8);
-        this.scene.rotate(Math.PI/2, 1, 0, 0);
-        this.scene.rotate(Math.PI, 1, 1, 0);
+        this.scene.translate(-0.4, 0, 1.4);
+        this.scene.rotate(-Math.PI/2, 0 , 1, 0);
+        this.scene.rotate(-Math.PI/2, 1, 0, 0);
         this.wingMaterial.apply();
         this.leftWingEnd.display();
         this.scene.popMatrix();
 
-        //Left wing end
+        //Left wing Beggining
         
         this.scene.pushMatrix();
-        this.scene.translate(0, 0, 0.7);
-        this.scene.translate(-0.8, 0, -0.4);
-        this.scene.rotate(this.ang, 1.0, 0.0, 0.0);
-        this.scene.translate(0,0.0,0.8);
+        this.scene.rotate(this.ang, 1, 0, 0);
+        this.scene.translate(-0.8, 0, 1);
         this.scene.rotate(-Math.PI/2, 1, 0, 0);
         this.wingMaterial.apply();
         this.leftWingBeggining.display();
@@ -359,11 +349,8 @@ class MyBird extends CGFobject {
         //Right wing end
 
         this.scene.pushMatrix();
-        this.scene.scale(0.5, 0.5, 0.5);
         this.scene.rotate(-this.ang, 1.0, 0.0, 0.0);
-        this.scene.translate(0,0,-2.1);
-        this.scene.rotate(-this.ang, 1.0, 0.0, 0.0);
-        this.scene.translate(-0.8,0,-0.8);
+        this.scene.translate(-0.4, 0, -1.4);
         this.scene.rotate(-Math.PI/2, 1, 0, 0);
         this.wingMaterial.apply();
         this.rightWingEnd.display();
@@ -372,8 +359,8 @@ class MyBird extends CGFobject {
         //Right wing beggining
 
         this.scene.pushMatrix();
-        this.scene.translate(-0.8, 0, -0.3);
-        this.scene.rotate(-this.ang, 1.0, 0.0, 0.0);
+        this.scene.rotate(-this.ang, 1, 0, 0);
+        this.scene.translate(-0.8, 0, -0.2);
         this.scene.rotate(-Math.PI/2, 1, 0, 0);
         this.wingMaterial.apply();
         this.rightWingBeggining.display();
