@@ -43,7 +43,6 @@ class MyNest extends CGFobject
         this.radius = 0.15;
         this.height = 0;
 
-        //console.log(this.slices);
         for (var j = 0; j < 15; j++){
             for (var i = 0; i < this.slices; i++) {
                 
@@ -56,12 +55,9 @@ class MyNest extends CGFobject
                 this.scene.popMatrix();
             }
             this.radius+=0.1;
-            //this.radius+=0.15;
+
             this.height+=0.1;
             
         }
 	}
-
-    
-
 };

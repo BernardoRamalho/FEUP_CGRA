@@ -73,8 +73,6 @@ class MyScene extends CGFscene {
 
     checkKeys(t) {
 
-        var text="Keys pressed: ";
-        var keysPressed=false;
         // Check for key codes e.g. in https://keycode.info/
         
         if (this.gui.isKeyPressed("KeyW"))
@@ -108,10 +106,9 @@ class MyScene extends CGFscene {
         
         this.bird.updatePosition(t, this.branches, this.nest,this.house.position);
         this.water.updateWater(t/3);
-        this.bird.updateWings(t);
         this.checkKeys(t);
+        this.bird.updateWings(t);
         
-
         if (this.lightning.displayLightning)
             this.lightning.update(t);
     }
