@@ -9,8 +9,6 @@ class MyBird extends CGFobject {
         super(scene);
 
         //MyBird Objects
-        //this.topBeak = new MyPrism(this.scene, 3, 3, 0.2, 0.05);
-        //this.bottomBeak = new MyPrism(this.scene, 3, 3, 0.1, 0.05);
         this.head = new MyUnevenCylinder(this.scene,5,4,0.1,0.2,0.25);
         this.head1 = new MyUnevenCylinder(this.scene,5,4,0.3,0.25,0.1);
         this.body = new MyCylinder(this.scene,5,4,1.0,0.4);
@@ -38,6 +36,7 @@ class MyBird extends CGFobject {
         this.speedFactor = 1;
 
         this.velocity = 0 ;
+        this.speedVelocity = 0;
         this.position = [0, 3, 0];
 
         this.initMaterials();
@@ -122,22 +121,30 @@ class MyBird extends CGFobject {
             this.orientation += Math.PI;
            
         
-        this.position[0] += Math.cos(this.orientation )*this.velocity;
-        this.position[2] += Math.sin(this.orientation )*this.velocity;
+        this.position[0] += Math.cos(this.orientation )*this.speedVelocity;
+        this.position[2] += Math.sin(this.orientation )*this.speedVelocity;
         
+    }
+
+    updateVelocity(){
+        this.speedVelocity = this.velocity * this.speedFactor;
     }
 
     accelerate(v){
 
         if(this.velocity+0.01*v > 0.1 && this.velocity+0.01*v < 3.0){
-            this.velocity += 0.01*v * this.speedFactor;
+            this.velocity += 0.01* v; 
+            
         }
         else if (this.velocity+0.01*v < 0.1){
-            this.velocity = 0.1 * this.speedFactor;;
+            this.velocity = 0.1;
+        
         }
         else {
-            this.velocity = 3*this.speedFactor;
+            this.velocity = 3;
         }
+
+        this.speedVelocity = this.velocity * this.speedFactor;
         
     }
 
@@ -188,6 +195,7 @@ class MyBird extends CGFobject {
         //Reseting MyBird Position and Velocity
         this.position = [0, 3, 0];
         this.velocity = 0;
+        this.speedVelocity = 0; 
 
         //Reseting MyBird State Variables
         this.isAscending = false;
