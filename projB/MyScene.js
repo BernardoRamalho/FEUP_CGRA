@@ -80,7 +80,7 @@ class MyScene extends CGFscene {
         if (this.gui.isKeyPressed("KeyW"))
             this.bird.accelerate(1);           
 
-        else if (this.gui.isKeyPressed("KeyS"))
+        if (this.gui.isKeyPressed("KeyS"))
             this.bird.accelerate(-1);
         
         if (this.gui.isKeyPressed("KeyA"))
@@ -107,9 +107,10 @@ class MyScene extends CGFscene {
     update(t){
         
         this.bird.updatePosition(t, this.branches, this.nest,this.house.position);
-        this.checkKeys(t);
         this.water.updateWater(t/3);
         this.bird.updateWings(t);
+        this.checkKeys(t);
+        
 
         if (this.lightning.displayLightning)
             this.lightning.update(t);

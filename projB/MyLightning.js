@@ -107,8 +107,6 @@ class MyLightning extends CGFobject {
 
             this.axiom = newString;
         }
-        console.log("Final: "+this.axiom);
-        console.log("(length: "+this.axiom.length+")");
     }
     
 
