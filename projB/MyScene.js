@@ -132,7 +132,7 @@ class MyScene extends CGFscene {
         this.applyViewMatrix();
 
         // Draw axis
-        this.axis.display();
+        //this.axis.display();
 
         //Apply default appearance
         this.setDefaultAppearance();
