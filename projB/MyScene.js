@@ -73,6 +73,8 @@ class MyScene extends CGFscene {
 
     checkKeys(t) {
 
+        var text="Keys pressed: ";
+        var keysPressed=false;
         // Check for key codes e.g. in https://keycode.info/
         
         if (this.gui.isKeyPressed("KeyW"))
@@ -106,9 +108,10 @@ class MyScene extends CGFscene {
         
         this.bird.updatePosition(t, this.branches, this.nest,this.house.position);
         this.water.updateWater(t/3);
-        this.checkKeys(t);
         this.bird.updateWings(t);
+        this.checkKeys(t);
         
+
         if (this.lightning.displayLightning)
             this.lightning.update(t);
     }
@@ -153,8 +156,6 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
 
-        //Display Water
-
         //Display Terrain
         
         this.pushMatrix();
@@ -162,6 +163,7 @@ class MyScene extends CGFscene {
         this.terrain.display();
         this.popMatrix();
         
+        //Display Water
         
         this.pushMatrix();
         this.translate(-5.0,0.1,7.0);

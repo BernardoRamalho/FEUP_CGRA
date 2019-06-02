@@ -21,7 +21,6 @@ class MyLightning extends CGFobject {
         this.scaleFactor = 0.5;
         
         
-        
         this.generate(
             this.axiom,
             {
@@ -193,7 +192,6 @@ class MyLightning extends CGFobject {
             }
             
         }
-        //this.super.display();
         this.scene.popMatrix();
     }
 }

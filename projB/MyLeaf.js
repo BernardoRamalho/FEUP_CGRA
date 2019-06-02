@@ -29,10 +29,8 @@ class MyLeaf extends CGFobject {
     display() {
 
         this.scene.pushMatrix();
-
         this.leafMaterial.apply();
         this.leaf.display();
-        
         this.scene.popMatrix();
     }
    

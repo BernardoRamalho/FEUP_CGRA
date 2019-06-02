@@ -52,11 +52,9 @@ class MyHouse extends CGFobject {
 
         
 
-        
         //Pyramid Transformation
+        
         this.scene.pushMatrix();
-        
-        
         
         this.scene.rotate(Math.PI/4, 0, 1, 0);
         

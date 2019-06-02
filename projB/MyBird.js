@@ -117,7 +117,7 @@ class MyBird extends CGFobject {
         }
         else{
             
-            this.position[1] = 3 + Math.sin(t/200)*0.5;
+            this.position[1] = 3 + Math.sin(t/200);
         }
 
         if (Math.abs(this.position[0]) > 18|| Math.abs(this.position[2]) > 15 || Math.abs(this.position[2]-housePosition[2] ) < 3) 
@@ -134,8 +134,7 @@ class MyBird extends CGFobject {
     }
     
     updateWings(t){
-        
-        this.ang = Math.sin(t*this.speedFactor*(this.velocity + 1)/200)*45;
+        this.ang = Math.sin(t*(this.speedFactor)*(this.velocity+0.5)/200)*45;
  
     }
 
@@ -192,10 +191,7 @@ class MyBird extends CGFobject {
     turn(v){
         this.orientation += 10*v * Math.PI/180;
     }
-
-
-   
-
+    
     reset(){
         //Reseting MyBird Position and Velocity
         this.position = [0, 3, 0];
@@ -229,6 +225,7 @@ class MyBird extends CGFobject {
     display(){
         
         this.scene.pushMatrix();
+
 
         //Changing Bird Position and Orientation
         
