@@ -37,6 +37,7 @@ class MyBird extends CGFobject {
 
         //Normal Velocity
         this.velocity = 0 ;
+        
         //Velocity time the Speed Factor
         this.speedVelocity = 0;
         this.position = [0, 3, 0];
