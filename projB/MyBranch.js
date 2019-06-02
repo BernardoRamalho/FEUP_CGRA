@@ -9,7 +9,6 @@ class MyBranch extends CGFobject {
 
         //Initializing MyBranch Components
         this.branch = new MyCylinder(this.scene, 4, 4, 1, 0.3);
-
 		this.initMaterials();
     }
 

@@ -146,9 +146,9 @@ class MyBird extends CGFobject {
         if(this.catchedBranch){
             if((Math.abs(this.position[0]-nest.position[0]) < 4) && (Math.abs(this.position[2]-this.branch.position[2]) < 4) && this.position[1] < 0.7 ){
                 //Set Branch Position to be almost equal to the nest
-                this.branch.position[0] = nest.position[0] +Math.random() -0.5;
+                this.branch.position[0] = nest.position[0] +Math.random()*2 -1;
                 this.branch.position[1] = nest.position[1] + 2;
-                this.branch.position[2] = nest.position[2] + Math.random() -0.5;
+                this.branch.position[2] = nest.position[2] + Math.random()*2 -1;
 
                 //Changing the State Variables
                 this.branch.isCatched = false;
@@ -174,7 +174,7 @@ class MyBird extends CGFobject {
     
 
     turn(v){
-        this.orientation += 10*v * Math.PI/180*this.speedFactor;
+        this.orientation += 10*v * Math.PI/180;
     }
 
     updateWings(t){
@@ -216,6 +216,7 @@ class MyBird extends CGFobject {
     display(){
         
         this.scene.pushMatrix();
+
 
         //Changing Bird Position and Orientation
         
@@ -409,7 +410,6 @@ class MyBird extends CGFobject {
             this.branch.orientation = 0;
             this.scene.pushMatrix();
             this.scene.translate(-1.5, -0.2,-1);
-            //this.scene.rotate(Math.PI,0 , 1, 0);
             this.branch.display(); 
             this.scene.popMatrix();
         }
