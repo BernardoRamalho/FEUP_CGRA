@@ -94,7 +94,7 @@ class MyBird extends CGFobject {
 
     updatePosition(t, branches,nest,housePosition,camera){
 
-        if (this.isDescending == true){
+        if (this.isDescending == true && this.position[1] > 0.5){
             this.position[1] -= 0.15*this.speedFactor;
 
             //When he is under 0.5 units high, checks if there is any branch or nest near
@@ -178,7 +178,7 @@ class MyBird extends CGFobject {
     }
 
     updateWings(t){
-        this.ang = Math.sin(t/200)*(this.velocity + 1)*this.speedFactor/1.5;
+        this.ang = Math.sin(t*(this.velocity + 1)*this.speedFactor/200)/1.5;
         
     }
 
