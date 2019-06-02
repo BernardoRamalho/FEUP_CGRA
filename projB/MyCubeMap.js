@@ -10,13 +10,8 @@ class MyCubeMap extends CGFobject {
 		this.scale = scale*2;
                 
         //Initialize MyUnitCubeQuad objects
-        this.frontQuad = new MyQuad(this.scene, 0.5); //The Front Face of the cube is the one with positive Z value
-        this.leftQuad = new MyQuad(this.scene, 0.5); //In relation to us, this is, the one with negative X value
-        this.rightQuad = new MyQuad(this.scene, 0.5);
-        this.backQuad = new MyQuad(this.scene, 0.5);
-        this.topQuad = new MyQuad(this.scene, 0.5);
-        this.bottomQuad = new MyQuad(this.scene, 0.5);
-
+        this.quad = new MyQuad(this.scene, 0.5);
+        
         //Initialize Textures
         this.frontTexture = frontTexture;
         this.backTexture = backTexture;
@@ -104,7 +99,7 @@ class MyCubeMap extends CGFobject {
        
         this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
        
-        this.topQuad.display();
+        this.quad.display();
         
         this.scene.popMatrix();
         
@@ -121,7 +116,7 @@ class MyCubeMap extends CGFobject {
         
         this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
         
-        this.bottomQuad.display();
+        this.quad.display();
         
         this.scene.popMatrix();
         
@@ -136,7 +131,7 @@ class MyCubeMap extends CGFobject {
         
         this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
         
-        this.backQuad.display();
+        this.quad.display();
         
         this.scene.popMatrix();
 
@@ -151,7 +146,7 @@ class MyCubeMap extends CGFobject {
         
         this.leftMaterial.apply();
         
-        this.leftQuad.display();
+        this.quad.display();
         
         this.scene.popMatrix();
 
@@ -166,7 +161,7 @@ class MyCubeMap extends CGFobject {
         
         this.rightMaterial.apply();
         
-        this.rightQuad.display();
+        this.quad.display();
         
         this.scene.popMatrix();
 
@@ -181,7 +176,7 @@ class MyCubeMap extends CGFobject {
         
         this.frontMaterial.apply();
         
-        this.frontQuad.display();
+        this.quad.display();
         
         this.scene.popMatrix();
         

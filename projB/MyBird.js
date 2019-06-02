@@ -71,7 +71,7 @@ class MyBird extends CGFobject {
         this.headMaterial.setDiffuse(1, 1, 1, 1);
         this.headMaterial.setSpecular(1, 1, 1, 1);
         this.headMaterial.setShininess(10.0);
-        this.headMaterial.loadTexture("images/head1.jpg"); 
+        this.headMaterial.loadTexture("images/head.jpg"); 
         this.headMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
         //Texture Beak
@@ -232,7 +232,6 @@ class MyBird extends CGFobject {
         //Changing Bird Position and Orientation
         
         this.scene.translate(...this.position);
-        //this.scene.scale(10,10,10);
 
         this.scene.rotate(-this.orientation, 0.0, 1.0, 0.0);
 
@@ -356,12 +355,11 @@ class MyBird extends CGFobject {
     
         //Drawing the Left Wing
     
-        this.scene.pushMatrix();
-        
-        this.scene.rotate(this.ang* Math.PI / 180, 1, 0, 0);
+    
         
         //Left wing Beggining
         this.scene.pushMatrix();
+        this.scene.rotate(this.ang* Math.PI / 180, 1, 0, 0);
         this.scene.translate(-0.8, 0, 1);
         this.scene.rotate((this.ang* Math.PI / 180 )/3,1, 0 ,0);
         this.scene.rotate(-Math.PI/2, 1, 0 ,0);
@@ -370,21 +368,22 @@ class MyBird extends CGFobject {
         this.scene.popMatrix();
         
         //Left wing End
+        this.scene.pushMatrix();
+        this.scene.rotate(this.ang* Math.PI / 180, 1, 0, 0);
         this.scene.translate(-0.4, 0, 1.4);
         this.scene.rotate(-Math.PI/2, 0 , 1, 0);
         this.scene.rotate(-Math.PI/2, 1, 0, 0);
         this.wingMaterial.apply();
         this.leftWingEnd.display();
-
         this.scene.popMatrix();
+
         
         //Drawing the Right Wing
-        this.scene.pushMatrix();
         
+        
+        //Right wing Beggining
+        this.scene.pushMatrix();
         this.scene.rotate(-this.ang* Math.PI / 180, 1, 0, 0);
-        
-        //Left wing Beggining
-        this.scene.pushMatrix();
         this.scene.translate(-0.8, 0, -1);
         this.scene.rotate(-(this.ang* Math.PI / 180)/3, 1, 0 ,0);
         this.scene.translate(0, 0, 0.8);
@@ -393,15 +392,16 @@ class MyBird extends CGFobject {
         this.rightWingBeggining.display();
         this.scene.popMatrix();
         
-        //Left wing End
-        this.scene.pushMatrix()
+        //Right wing End
+        this.scene.pushMatrix();
+        this.scene.rotate(-this.ang* Math.PI / 180, 1, 0, 0);
         this.scene.translate(-0.4, 0, -1.4);
         this.scene.rotate(-Math.PI/2, 1, 0, 0);
         this.wingMaterial.apply();
         this.rightWingEnd.display();
         this.scene.popMatrix();
 
-        this.scene.popMatrix();
+
 
         //Tail Drawing
         
